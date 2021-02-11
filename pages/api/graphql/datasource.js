@@ -3,21 +3,18 @@ import { formatDate, formatTime } from './helpers';
 
 class OpenWeatherMapAPI extends RESTDataSource {
   constructor() {
-    super()
-    this.baseURL = 'http://api.openweathermap.org/data/2.5'
+    super();
+    this.baseURL = 'http://api.openweathermap.org/data/2.5';
   }
 
   getAirPollution = async ({ latitude, longitude }) => {
-    const response = await this.get(
-      'air_pollution',
-      {
-        lat: latitude,
-        lon: longitude,
-        appid: process.env.API_KEY
-      }
-    )
+    const response = await this.get('air_pollution', {
+      lat: latitude,
+      lon: longitude,
+      appid: process.env.API_KEY
+    });
     return this.airPollutionReducer(response, latitude, longitude);
-  }
+  };
 
   airPollutionReducer = (result, latitude, longitude) => {
     return {
@@ -28,17 +25,17 @@ class OpenWeatherMapAPI extends RESTDataSource {
       },
       pm2_5: result.list[0].components.pm2_5,
       pm10: result.list[0].components.pm10
-    }
-  }
+    };
+  };
 
   getCurrentWeather = async ({ city }) => {
     const response = await this.get('weather', {
       q: city,
       units: 'metric',
       appid: process.env.API_KEY
-    })
+    });
     return this.currentWeatherReducer(response, city);
-  }
+  };
 
   currentWeatherReducer = (result, city) => {
     const { timezone } = result;
@@ -68,20 +65,22 @@ class OpenWeatherMapAPI extends RESTDataSource {
         speed: result.wind.speed
       },
       time: formatTime(result.dt, timezone)
-    }
-  }
+    };
+  };
 
-  getFutureWeather = async({ city }) => {
+  getFutureWeather = async ({ city }) => {
     const response = await this.get('forecast', {
       q: city,
       units: 'metric',
       appid: process.env.API_KEY
-    })
+    });
     return this.futureWeatherReducer(response, city);
-  }
+  };
 
   futureWeatherReducer = (result, city) => {
-    const { city: { timezone } } = result;
+    const {
+      city: { timezone }
+    } = result;
     return {
       id: result.id || 0,
       location: {
@@ -108,10 +107,10 @@ class OpenWeatherMapAPI extends RESTDataSource {
           direction: element.wind.deg,
           speed: element.wind.speed
         },
-        time: formatTime(element.dt, timezone),
+        time: formatTime(element.dt, timezone)
       }))
-    }
-  }
+    };
+  };
 }
 
 export default OpenWeatherMapAPI;

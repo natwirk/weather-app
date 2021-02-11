@@ -4,11 +4,14 @@ import OpenWeatherMapAPI from './graphql/datasource';
 
 const resolvers = {
   Query: {
-      airPollution: (_, { latitude, longitude }, { dataSources }) => dataSources.openWeatherMapAPI.getAirPollution({ latitude, longitude }),
-      currentWeather: (_, { city }, { dataSources }) => dataSources.openWeatherMapAPI.getCurrentWeather({ city }),
-      futureWeather: (_, { city }, { dataSources }) => dataSources.openWeatherMapAPI.getFutureWeather({ city })
-    }
-  };
+    airPollution: (_, { latitude, longitude }, { dataSources }) =>
+      dataSources.openWeatherMapAPI.getAirPollution({ latitude, longitude }),
+    currentWeather: (_, { city }, { dataSources }) =>
+      dataSources.openWeatherMapAPI.getCurrentWeather({ city }),
+    futureWeather: (_, { city }, { dataSources }) =>
+      dataSources.openWeatherMapAPI.getFutureWeather({ city })
+  }
+};
 
 const apolloServer = new ApolloServer({
   typeDefs,
@@ -18,7 +21,7 @@ const apolloServer = new ApolloServer({
   })
 });
 
-const handler = apolloServer.createHandler({ path: "/api/graphql" });
+const handler = apolloServer.createHandler({ path: '/api/graphql' });
 
 export const config = {
   api: {
