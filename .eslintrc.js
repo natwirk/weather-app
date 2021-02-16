@@ -1,8 +1,9 @@
 module.exports = {
   env: {
-    browser: true,
     amd: true,
-    node: true
+    browser: true,
+    node: true,
+    jest: true
   },
   extends: [
     'eslint:recommended',

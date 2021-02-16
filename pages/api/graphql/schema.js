@@ -18,6 +18,7 @@ const typeDefs = gql`
   }
   type CurrentWeather {
     id: ID!
+    airPollution: AirPollution
     location: Location
     conditions: Conditions
     date: String

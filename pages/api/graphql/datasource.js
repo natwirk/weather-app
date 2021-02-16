@@ -38,9 +38,20 @@ class OpenWeatherMapAPI extends RESTDataSource {
   };
 
   currentWeatherReducer = (result, city) => {
-    const { timezone } = result;
+    const {
+      coord: { lat: latitude, lon: longitude },
+      timezone
+    } = result;
     return {
       id: result.id || 0,
+      airPollution: this.getAirPollution({
+        latitude,
+        longitude
+      }),
+      coordinates: {
+        latitude,
+        longitude
+      },
       location: {
         city: result.name ? result.name : city,
         country: result.sys.country,
