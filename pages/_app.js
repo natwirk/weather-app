@@ -1,6 +1,7 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { GlobalStyle } from '../styles/global';
 import PropTypes from 'prop-types';
+import { Normalize } from 'styled-normalize';
+import { GlobalStyle } from '../styles/global';
 
 const client = new ApolloClient({
   uri: 'http://localhost:3000/api/graphql',
@@ -10,6 +11,7 @@ const client = new ApolloClient({
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
+      <Normalize />
       <GlobalStyle />
       <Component {...pageProps} />
     </ApolloProvider>
