@@ -7,7 +7,9 @@ const Icon = ({ code, color, width }) => {
 };
 
 Icon.propTypes = {
-  code: PropTypes.string
+  code: PropTypes.string,
+  color: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Icon.defaultProps = {

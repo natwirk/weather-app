@@ -4,8 +4,8 @@ import { StyledLine } from '../SVGElements';
 const MistIcon = ({ color, width }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="99.991"
-    height="59.614"
+    width={width}
+    height="auto"
     viewBox="0 0 99.991 59.614"
   >
     <g transform="translate(0 1.5)">
@@ -75,7 +75,7 @@ const MistIcon = ({ color, width }) => (
 
 MistIcon.propTypes = {
   color: PropTypes.string,
-  width: PropTypes.number
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 MistIcon.defaultProps = {

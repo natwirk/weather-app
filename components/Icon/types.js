@@ -3,6 +3,7 @@ import ClearIcon from './components/Clear';
 import CloudsIcon from './components/Clouds';
 import cloudTypes from './components/Clouds/types';
 import SnowIcon from './components/Snow';
+import MistIcon from './components/Mist';
 
 const types = {
   '01d': props => <ClearIcon night={false} {...props} />,
@@ -42,7 +43,9 @@ const types = {
     <CloudsIcon type={cloudTypes.THUNDERSTORM} night={true} {...props} />
   ),
   '13d': props => <SnowIcon type={cloudTypes.RAIN} night={false} {...props} />,
-  '13n': props => <SnowIcon type={cloudTypes.RAIN} night={true} {...props} />
+  '13n': props => <SnowIcon type={cloudTypes.RAIN} night={true} {...props} />,
+  '50d': props => <MistIcon type={cloudTypes.RAIN} night={false} {...props} />,
+  '50n': props => <MistIcon type={cloudTypes.RAIN} night={true} {...props} />
 };
 
 export default types;
