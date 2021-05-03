@@ -19,6 +19,7 @@
     "apollo-server-micro": "^2.19.2",
     "babel-eslint": "^10.1.0",
     "graphql": "^15.5.0",
+    "nanoid": "^3.1.22",
     "next": "10.0.6",
     "prop-types": "^15.7.2",
     "react": "17.0.1",

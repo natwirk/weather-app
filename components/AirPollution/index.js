@@ -2,15 +2,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { StyledTitle } from '../Typography';
-
-const StyledWrapper = styled.div`
-  border-radius: 10px;
-  width: 400px;
-  padding: 20px 30px 30px;
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  color: rgba(255, 255, 255, 0.9);
-`;
+import Card from '../Card';
 
 const StyledItems = styled.ul`
   list-style-type: none;
@@ -31,7 +23,7 @@ const StyledItemValue = styled.span`
 
 const AirPollution = ({ pm2_5, pm10 }) => {
   return (
-    <StyledWrapper data-test="component-air-pollution">
+    <Card data-test="component-air-pollution" width="400px">
       <StyledTitle>Air Pollution</StyledTitle>
       <StyledItems>
         <StyledItem>
@@ -47,7 +39,7 @@ const AirPollution = ({ pm2_5, pm10 }) => {
           </StyledItemValue>
         </StyledItem>
       </StyledItems>
-    </StyledWrapper>
+    </Card>
   );
 };
 

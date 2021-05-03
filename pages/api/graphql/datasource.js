@@ -1,5 +1,6 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 import { formatDate, formatTime } from './helpers';
+import { nanoid } from 'nanoid';
 
 class OpenWeatherMapAPI extends RESTDataSource {
   constructor() {
@@ -66,10 +67,10 @@ class OpenWeatherMapAPI extends RESTDataSource {
       date: formatDate(result.dt, timezone),
       humidity: result.main.humidity,
       temperature: {
-        main: result.main.temp,
-        min: result.main.temp_min,
-        max: result.main.temp_max,
-        feelsLike: result.main.feels_like
+        main: Math.round(result.main.temp),
+        min: Math.round(result.main.temp_min),
+        max: Math.round(result.main.temp_max),
+        feelsLike: Math.round(result.main.feels_like)
       },
       wind: {
         direction: result.wind.deg,
@@ -101,6 +102,7 @@ class OpenWeatherMapAPI extends RESTDataSource {
         sunset: formatTime(result.city.sunset, timezone)
       },
       forecast: result.list.map(element => ({
+        id: nanoid(),
         conditions: {
           name: element.weather[0].main,
           description: element.weather[0].description,
@@ -109,10 +111,10 @@ class OpenWeatherMapAPI extends RESTDataSource {
         date: formatDate(element.dt, timezone),
         humidity: element.main.humidity,
         temperature: {
-          main: element.main.temp,
-          min: element.main.temp_min,
-          max: element.main.temp_max,
-          feelsLike: element.main.feels_like
+          main: Math.round(element.main.temp),
+          min: Math.round(element.main.temp_min),
+          max: Math.round(element.main.temp_max),
+          feelsLike: Math.round(element.main.feels_like)
         },
         wind: {
           direction: element.wind.deg,

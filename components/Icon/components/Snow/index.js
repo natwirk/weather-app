@@ -22,7 +22,6 @@ const SnowIcon = ({ color, width }) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
-      height="auto"
       viewBox="0 0 100 96.812"
     >
       <g transform="translate(66.604 0) rotate(90)">
@@ -133,7 +132,7 @@ const SnowIcon = ({ color, width }) => {
 
 SnowIcon.propTypes = {
   color: PropTypes.string,
-  width: PropTypes.number
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 SnowIcon.defaultProps = {

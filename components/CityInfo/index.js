@@ -1,16 +1,8 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
+import Card from '../Card';
 import { StyledTitle } from '../Typography';
-
-const StyledWrapper = styled.div`
-  border-radius: 10px;
-  width: 400px;
-  padding: 20px 30px 30px;
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  color: rgba(255, 255, 255, 0.9);
-`;
 
 const StyledCoordinates = styled.ul`
   margin: 0;
@@ -34,7 +26,7 @@ const StyledCoordinatesValue = styled.span`
 
 const CityInfo = ({ latitude, longitude, name }) => {
   return (
-    <StyledWrapper data-test="component-city-info">
+    <Card data-test="component-city-info" width="350px">
       <StyledTitle data-test="name">
         {name || <Skeleton width={200} />}
       </StyledTitle>
@@ -52,7 +44,7 @@ const CityInfo = ({ latitude, longitude, name }) => {
           </StyledCoordinatesValue>
         </StyledCoordinatesItem>
       </StyledCoordinates>
-    </StyledWrapper>
+    </Card>
   );
 };
 

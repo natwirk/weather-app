@@ -2,6 +2,8 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import PropTypes from 'prop-types';
 import { Normalize } from 'styled-normalize';
 import { GlobalStyle } from '../styles/global';
+import { SkeletonTheme } from 'react-loading-skeleton';
+import { skeletonThemeProps } from '../styles/skeleton';
 
 const client = new ApolloClient({
   uri: 'http://localhost:3000/api/graphql',
@@ -13,7 +15,9 @@ function MyApp({ Component, pageProps }) {
     <ApolloProvider client={client}>
       <Normalize />
       <GlobalStyle />
-      <Component {...pageProps} />
+      <SkeletonTheme {...skeletonThemeProps}>
+        <Component {...pageProps} />
+      </SkeletonTheme>
     </ApolloProvider>
   );
 }

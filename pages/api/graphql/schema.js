@@ -28,6 +28,7 @@ const typeDefs = gql`
     time: String
   }
   type Forecast {
+    id: String
     conditions: Conditions
     date: String
     humidity: Int
@@ -47,10 +48,10 @@ const typeDefs = gql`
     forecast: [Forecast]
   }
   type Temperature {
-    feelsLike: Float
-    main: Float
-    min: Float
-    max: Float
+    feelsLike: Int
+    main: Int
+    min: Int
+    max: Int
   }
   type Wind {
     direction: Int

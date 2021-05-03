@@ -15,7 +15,7 @@ export const formatDate = (timestamp, timezone) => {
   const date = new Date(timestamp * 1000 + timezone);
   return `${_prepareValue(date.getUTCDate())}/${_prepareValue(
     date.getUTCMonth() + 1
-  )}/${date.getUTCFullYear()}`;
+  )}/${+date.getUTCFullYear().toString().substring(2)}`;
 };
 
 /**

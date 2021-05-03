@@ -1,12 +1,16 @@
 import { Normalize } from 'styled-normalize';
 import { GlobalStyle } from '../styles/global';
+import { SkeletonTheme } from 'react-loading-skeleton';
+import { skeletonThemeProps } from '../styles/skeleton';
 
 export const decorators = [
   Story => (
     <>
       <Normalize />
       <GlobalStyle />
-      <Story />
+      <SkeletonTheme {...skeletonThemeProps}>
+        <Story />
+      </SkeletonTheme>
     </>
   )
 ];

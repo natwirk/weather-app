@@ -11,7 +11,7 @@ const ClearIcon = ({ color, night, width }) => {
     delay: '0.8s'
   };
   return (
-    <svg viewBox="0 0 100 100" height="auto" width={width}>
+    <svg viewBox="0 0 100 100" width={width}>
       {!night && (
         <>
           <StyledLine x1="25" y1="30" x2="10" y2="15" {...lineProps} />
