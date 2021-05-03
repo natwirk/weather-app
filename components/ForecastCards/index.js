@@ -30,6 +30,6 @@ const ForecastCards = ({ forecast }) => (
 
 ForecastCards.propTypes = {
   forecast: PropTypes.arrayOf(PropTypes.shape(forecastTypes))
-}
+};
 
 export default ForecastCards;
