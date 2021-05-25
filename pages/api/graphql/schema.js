@@ -6,6 +6,7 @@ const typeDefs = gql`
     coordinates: Coordinates
     pm2_5: Float
     pm10: Float
+    qualityIndex: Int
   }
   type Conditions {
     name: String

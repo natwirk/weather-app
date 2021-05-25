@@ -25,7 +25,8 @@ class OpenWeatherMapAPI extends RESTDataSource {
         longitude
       },
       pm2_5: result.list[0].components.pm2_5,
-      pm10: result.list[0].components.pm10
+      pm10: result.list[0].components.pm10,
+      qualityIndex: result.list[0].main.aqi
     };
   };
 
