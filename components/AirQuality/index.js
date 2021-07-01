@@ -25,11 +25,11 @@ const StyledItemValue = styled.span`
   margin-left: 1rem;
 `;
 
-const AirPollution = ({ pm2_5, pm10, qualityIndex }) => {
+const AirQuality = ({ pm2_5, pm10, qualityIndex }) => {
   return (
     <Card
       background={quality.get(qualityIndex)?.background}
-      data-test="component-air-pollution"
+      data-test="component-air-quality"
       width="300px"
       center={true}
     >
@@ -55,10 +55,10 @@ const AirPollution = ({ pm2_5, pm10, qualityIndex }) => {
   );
 };
 
-AirPollution.propTypes = {
+AirQuality.propTypes = {
   qualityIndex: PropTypes.oneOf([1, 2, 3, 4, 5]),
   pm2_5: PropTypes.number,
   pm10: PropTypes.number
 };
 
-export default AirPollution;
+export default AirQuality;

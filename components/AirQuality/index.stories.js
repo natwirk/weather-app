@@ -1,16 +1,16 @@
-import AirPollution from './index';
+import AirQuality from './index';
 
 export default {
-  title: 'AirPollution',
-  component: AirPollution
+  title: 'AirQuality',
+  component: AirQuality
 };
 
-const Template = args => <AirPollution {...args} />;
+const Template = args => <AirQuality {...args} />;
 
 export const Default = () => (
-  <AirPollution pm2_5={13.52} pm10={16.05} qualityIndex={2} />
+  <AirQuality pm2_5={13.52} pm10={16.05} qualityIndex={2} />
 );
-export const Loading = () => <AirPollution />;
+export const Loading = () => <AirQuality />;
 export const Playground = Template.bind({});
 
 Default.parameters = Loading.parameters = {

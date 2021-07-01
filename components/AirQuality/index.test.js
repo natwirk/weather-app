@@ -1,13 +1,13 @@
 import { shallow } from 'enzyme';
 import { findByTestAttribute } from '../../test/testUtils';
-import AirPollution from './index';
+import AirQuality from './index';
 import quality from './quality';
 
 const defaultProps = {};
 
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<AirPollution {...setupProps} />);
+  return shallow(<AirQuality {...setupProps} />);
 };
 
 let wrapper;
@@ -24,7 +24,7 @@ describe('renders without error when data is provided', () => {
   });
 
   test('renders wrapper without error', () => {
-    const component = findByTestAttribute(wrapper, 'component-air-pollution');
+    const component = findByTestAttribute(wrapper, 'component-air-quality');
     expect(component.length).toBe(1);
   });
 
@@ -49,7 +49,7 @@ describe('renders without error when data is not provided', () => {
     wrapper = setup({});
   });
   test('renders wrapper without error', () => {
-    const component = findByTestAttribute(wrapper, 'component-air-pollution');
+    const component = findByTestAttribute(wrapper, 'component-air-quality');
     expect(component.length).toBe(1);
   });
 

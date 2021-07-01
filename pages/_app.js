@@ -1,7 +1,9 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 import { GlobalStyle } from '../styles/global';
+import { defaultTheme } from '../styles/theme';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { skeletonThemeProps } from '../styles/skeleton';
 
@@ -10,21 +12,24 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
+  const theme = defaultTheme;
   return (
     <ApolloProvider client={client}>
-      <Normalize />
-      <GlobalStyle />
-      <SkeletonTheme {...skeletonThemeProps}>
-        <Component {...pageProps} />
-      </SkeletonTheme>
+      <ThemeProvider theme={theme}>
+        <Normalize />
+        <GlobalStyle />
+        <SkeletonTheme {...skeletonThemeProps}>
+          <Component {...pageProps} />
+        </SkeletonTheme>
+      </ThemeProvider>
     </ApolloProvider>
   );
 }
 
-MyApp.propTypes = {
+App.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired
 };
 
-export default MyApp;
+export default App;

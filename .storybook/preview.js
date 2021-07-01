@@ -1,16 +1,20 @@
 import { Normalize } from 'styled-normalize';
+import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../styles/global';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { skeletonThemeProps } from '../styles/skeleton';
+import { defaultTheme } from '../styles/theme';
 
 export const decorators = [
   Story => (
     <>
       <Normalize />
       <GlobalStyle />
-      <SkeletonTheme {...skeletonThemeProps}>
-        <Story />
-      </SkeletonTheme>
+      <ThemeProvider theme={defaultTheme}>
+        <SkeletonTheme {...skeletonThemeProps}>
+          <Story />
+        </SkeletonTheme>
+      </ThemeProvider>
     </>
   )
 ];

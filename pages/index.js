@@ -1,39 +1,19 @@
 import Head from 'next/head';
-import { gql, useQuery } from '@apollo/client';
-
-const GET_CURRENT_WEATHER = gql`
-  query GetCurrentWeather($city: String!) {
-    currentWeather(city: $city) {
-      id
-      airPollution {
-        id
-        pm2_5
-        pm10
-      }
-    }
-  }
-`;
+import { StyledPageWrapper } from '../components/Page/Wrapper';
 
 const Home = () => {
-  const { loading, error, data } = useQuery(GET_CURRENT_WEATHER, {
-    variables: {
-      city: 'Rome'
-    }
-  });
-
-  console.log(data);
-
   return (
-    <div>
+    <StyledPageWrapper>
       <Head>
         <title>Weather</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
         <h1>Weather</h1>
+        <p>Search...</p>
       </main>
       <footer />
-    </div>
+    </StyledPageWrapper>
   );
 };
 

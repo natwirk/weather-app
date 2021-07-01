@@ -11,14 +11,16 @@ export const opacity = keyframes`
   }
 `;
 
-const StyledFlipCard = styled.div`
+const StyledFlipCard = styled.button`
   border-radius: 10px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   padding: ${({ small }) => (small ? '10px 10px 15px' : '20px 30px 30px')};
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  color: rgba(255, 255, 255, 0.9);
+  background: ${({ theme }) => theme.background.primary};
+  color: ${({ theme }) => theme.color.primary};
   transition: height 200ms ease-in-out;
   will-change: transform;
   perspective: 1000px;
@@ -56,16 +58,8 @@ const StyledFlipCardContent = styled.div`
 const FlipCard = ({ center, children, height, small, width, ...props }) => {
   const [flip, setFlip] = useState(false);
 
-  const onMouseOver = () => {
-    if (!flip) {
-      setFlip(true);
-    }
-  };
-
-  const onMouseLeave = () => {
-    if (flip) {
-      setFlip(false);
-    }
+  const onClick = () => {
+    setFlip(!flip);
   };
 
   return (
@@ -75,10 +69,7 @@ const FlipCard = ({ center, children, height, small, width, ...props }) => {
       height={height}
       width={width}
       flip={flip}
-      onMouseOver={onMouseOver}
-      onFocus={onMouseOver}
-      onMouseLeave={onMouseLeave}
-      onBlur={onMouseLeave}
+      onClick={onClick}
       {...props}
     >
       <StyledFlipCardInner flip={flip}>
