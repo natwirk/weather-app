@@ -22,6 +22,7 @@ const typeDefs = gql`
     airPollution: AirPollution
     location: Location
     conditions: Conditions
+    coordinates: Coordinates
     date: String
     humidity: Int
     temperature: Temperature
