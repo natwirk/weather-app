@@ -78,7 +78,6 @@ MistIcon.propTypes = {
 };
 
 MistIcon.defaultProps = {
-  color: '#fff',
   width: 100
 };
 

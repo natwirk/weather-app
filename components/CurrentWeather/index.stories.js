@@ -25,11 +25,12 @@ const defaultProps = {
   wind: {
     speed: 2.57,
     direction: 180
-  }
+  },
+  maxWidth: '500px'
 };
 
 export const Default = () => <CurrentWeather {...defaultProps} />;
-export const Loading = () => <CurrentWeather />;
+export const Loading = () => <CurrentWeather maxWidth="500px" />;
 export const Playground = Template.bind({});
 
 Default.parameters = Loading.parameters = {

@@ -9,19 +9,18 @@ const StyledForecastCard = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  color: #fff;
+  color: ${({ theme }) => theme.color.primary};
   opacity: 0.88;
   margin: 0 1rem;
 `;
 
 const StyledDescription = styled.span`
-  margin: 0.5rem 0 0;
-  font-size: 1.2rem;
+  margin: 1rem 0 0;
 `;
 
 const StyledHeading = styled.h3`
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin: 0 0 0.5rem;
   font-weight: 400;
 `;
@@ -31,18 +30,16 @@ const StyledInnerHeading = styled.span`
 `;
 
 const StyledTemperature = styled.p`
-  margin: 0.5rem 0 0;
-  font-size: 1.6rem;
+  margin: 1rem 0 0;
+  font-size: 2.4rem;
   font-weight: 700;
 `;
 
 const StyledWind = styled.p`
   margin: 0;
-  font-size: 1.2rem;
 `;
 const StyledWindHeading = styled.span`
-  margin: 0.5rem 0 0;
-  font-size: 1.2rem;
+  margin: 1rem 0 0;
   font-weight: 700;
   display: block;
   text-align: center;
@@ -55,18 +52,17 @@ const StyledInfo = styled.div`
 `;
 
 const StyledAdditionalInfo = styled.dl`
-  font-size: 1.2rem;
   margin: 0;
   padding: 0;
 `;
 
 const StyledAdditionalInfoDd = styled.dd`
-  margin: 0;
+  margin: 0 0 1rem;
 `;
 
 const StyledAdditionalInfoDt = styled.dt`
   text-align: center;
-  margin: 1rem 0 0.2rem;
+  margin: 1rem 0;
   font-weight: 700;
 `;
 
@@ -93,18 +89,13 @@ const ForecastCard = ({
       {!isDataMissing ? (
         <FlipCard
           center={true}
-          width="110px"
-          height="150px"
+          width="180px"
+          height="240px"
           small={true}
           data-test="card"
         >
           <StyledInfo>
-            <Icon
-              data-test="icon"
-              color="#fff"
-              width="50px"
-              code={conditions.icon}
-            />
+            <Icon data-test="icon" width="80px" code={conditions.icon} />
             <StyledDescription data-test="description">
               {conditions.description}
             </StyledDescription>
@@ -115,7 +106,7 @@ const ForecastCard = ({
             <StyledWind data-test="wind">
               <StyledWindHeading>Wind:</StyledWindHeading>
               {wind.speed}km/h
-              <WindDirection deg={wind.direction} size="1.4rem" />
+              <WindDirection deg={wind.direction} size="2rem" />
             </StyledWind>
           </StyledInfo>
           <StyledAdditionalInfo data-test="additional-information">
@@ -138,7 +129,7 @@ const ForecastCard = ({
           ;
         </FlipCard>
       ) : (
-        <Skeleton data-test="card-skeleton" width={110} height={150} />
+        <Skeleton data-test="card-skeleton" width={180} height={240} />
       )}
     </StyledForecastCard>
   );

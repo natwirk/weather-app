@@ -59,7 +59,7 @@ const CloudsIcon = ({ color, night, type, width }) => {
               initialX={22.288}
               initialY={88}
               type={type}
-              delay={0}
+              delay={1}
             />
           ))}
           {rowsToMap.map(key => (
@@ -71,7 +71,7 @@ const CloudsIcon = ({ color, night, type, width }) => {
               initialX={20.288}
               initialY={102}
               type={type}
-              delay={0.1}
+              delay={1.1}
             />
           ))}
           {rowsToMap.map(key => (
@@ -83,7 +83,7 @@ const CloudsIcon = ({ color, night, type, width }) => {
               initialX={18.288}
               initialY={116}
               type={type}
-              delay={0.2}
+              delay={1.2}
             />
           ))}
         </>
@@ -98,7 +98,7 @@ const CloudsIcon = ({ color, night, type, width }) => {
             dashArray={80}
             duration="0.2s"
             timing="ease-out"
-            delay="0.6s"
+            delay="1.6s"
           />
         </>
       )}
@@ -110,7 +110,7 @@ const CloudsIcon = ({ color, night, type, width }) => {
             color={color}
             dashOffset={100}
             dashArray={100}
-            duration="0.6s"
+            duration="1.6s"
             timing="ease-out"
           />
           {!night && (
@@ -123,7 +123,7 @@ const CloudsIcon = ({ color, night, type, width }) => {
                 dashArray={20}
                 duration="0.15s"
                 timing="ease-out"
-                delay="0.7s"
+                delay="1.7s"
               />
               <StyledLine
                 y1="10"
@@ -133,7 +133,7 @@ const CloudsIcon = ({ color, night, type, width }) => {
                 dashArray={20}
                 duration="0.15s"
                 timing="ease-out"
-                delay="0.7s"
+                delay="1.7s"
               />
               <StyledLine
                 y1="10"
@@ -143,7 +143,7 @@ const CloudsIcon = ({ color, night, type, width }) => {
                 dashArray={20}
                 duration="0.15s"
                 timing="ease-out"
-                delay="0.7s"
+                delay="1.7s"
               />
               <StyledLine
                 y1="10"
@@ -153,7 +153,7 @@ const CloudsIcon = ({ color, night, type, width }) => {
                 dashArray={20}
                 duration="0.15s"
                 timing="ease-out"
-                delay="0.7s"
+                delay="1.7s"
               />
             </>
           )}
@@ -171,7 +171,6 @@ CloudsIcon.propTypes = {
 };
 
 CloudsIcon.defaultProps = {
-  color: '#fff',
   night: false,
   type: types.DEFAULT,
   width: 100

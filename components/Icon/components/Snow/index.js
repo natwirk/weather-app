@@ -8,7 +8,7 @@ const SnowIcon = ({ color, width }) => {
     color: color,
     duration: '0.4s',
     timing: 'ease-out',
-    delay: '0.2s'
+    delay: '1.2s'
   };
   const pathProps = {
     dashOffset: 48,
@@ -16,7 +16,7 @@ const SnowIcon = ({ color, width }) => {
     color: color,
     duration: '0.5s',
     timing: 'ease-in-out',
-    delay: '0s'
+    delay: '1s'
   };
   return (
     <svg
@@ -136,7 +136,6 @@ SnowIcon.propTypes = {
 };
 
 SnowIcon.defaultProps = {
-  color: '#fff',
   width: 100
 };
 

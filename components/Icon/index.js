@@ -3,18 +3,19 @@ import types from './types';
 
 const Icon = ({ code, color, width }) => {
   const Component = types[code];
-  return <Component color={color} width={width} />;
+  if (Component) {
+    return <Component color={color} width={width} />;
+  }
+  return <div />;
 };
 
 Icon.propTypes = {
-  code: PropTypes.string,
+  code: PropTypes.string.isRequired,
   color: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Icon.defaultProps = {
-  code: '01d',
-  color: '#fff',
   width: 100
 };
 

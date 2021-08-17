@@ -8,7 +8,7 @@ export default {
 
 const Template = args => <Icon {...args} />;
 
-export const Default = () => <Icon />;
+export const Default = () => <Icon code="01d" />;
 export const Playground = Template.bind({});
 
 Default.parameters = {
@@ -49,6 +49,6 @@ Playground.argTypes = {
 
 Playground.args = {
   code: '01d',
-  color: '#fff',
+  color: 'rgba(0, 0, 0, 0.88)',
   width: 100
 };

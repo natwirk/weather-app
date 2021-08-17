@@ -1,15 +1,7 @@
 import { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
-export const opacity = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
+import { opacity } from '../../styles/keyframes';
 
 const StyledFlipCard = styled.button`
   border-radius: 10px;

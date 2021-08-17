@@ -8,7 +8,7 @@ const ClearIcon = ({ color, night, width }) => {
     color: color,
     duration: '0.7s',
     timing: 'ease-out',
-    delay: '0.8s'
+    delay: '1.8s'
   };
   return (
     <svg viewBox="0 0 100 100" width={width}>
@@ -32,6 +32,7 @@ const ClearIcon = ({ color, night, width }) => {
         dashOffset={101}
         dashArray={101}
         color={color}
+        delay="1s"
         duration="0.7s"
         timing="ease-in-out"
       />
@@ -46,7 +47,6 @@ ClearIcon.propTypes = {
 };
 
 ClearIcon.defaultProps = {
-  color: '#fff',
   night: false,
   width: 100
 };

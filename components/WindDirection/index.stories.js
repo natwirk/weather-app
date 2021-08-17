@@ -17,14 +17,6 @@ Default.parameters = {
   }
 };
 
-Playground.argTypes = {
-  color: {
-    control: {
-      type: 'color'
-    }
-  }
-};
-
 Playground.parameters = {
   controls: {
     expanded: true,
@@ -33,7 +25,6 @@ Playground.parameters = {
 };
 
 Playground.args = {
-  color: '#fff',
   deg: 0,
   size: '3rem'
 };

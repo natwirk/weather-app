@@ -1,19 +1,13 @@
-import Head from 'next/head';
-import { StyledPageWrapper } from '../components/Page/Wrapper';
+import Page from '../components/Page';
 
 const Home = () => {
   return (
-    <StyledPageWrapper>
-      <Head>
-        <title>Weather</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
+    <Page>
+      <>
         <h1>Weather</h1>
         <p>Search...</p>
-      </main>
-      <footer />
-    </StyledPageWrapper>
+      </>
+    </Page>
   );
 };
 

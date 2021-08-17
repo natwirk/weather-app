@@ -8,3 +8,12 @@ export const dashOffsetKeyframe = offset => keyframes`
     stroke-dashoffset: 0;
   }
 `;
+
+export const opacity = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;

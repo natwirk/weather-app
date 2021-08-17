@@ -1,19 +1,21 @@
 import Skeleton from 'react-loading-skeleton';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Card from '../Card';
 import Icon from '../Icon';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import WindDirection from '../WindDirection';
 import ForecastTypes from '../../types/forecast';
 
 const StyledDescription = styled.p`
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   grid-column: 2;
   margin: 0;
 `;
 
 const StyledTemperature = styled.p`
   grid-column: 2;
-  font-size: 3.6rem;
+  font-size: 4.8rem;
   font-weight: 700;
   margin: 1rem 0 0;
 `;
@@ -49,7 +51,7 @@ const StyledAdditionalInfo = styled.dl`
   padding: 0;
   display: grid;
   grid-column-gap: 1.5rem;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, auto);
   width: 100%;
 `;
 
@@ -65,88 +67,173 @@ const StyledAdditionalInfoDt = styled.dt`
   text-align: left;
 `;
 
-const CurrentWeather = ({ conditions, humidity, temperature, wind }) => {
+const CurrentWeather = ({
+  conditions,
+  humidity,
+  maxWidth,
+  temperature,
+  wind
+}) => {
   return (
-    <Card data-test="component-current-weather" width="100%">
+    <Card
+      data-test="component-current-weather"
+      width="100%"
+      height="100%"
+      maxWidth={maxWidth}
+    >
       <StyledInfo>
         <StyledIconWrapper>
           {conditions?.icon ? (
-            <Icon
-              data-test="icon"
-              color="#fff"
-              width="120px"
-              code={conditions.icon}
-            />
+            <Icon data-test="icon" width="120px" code={conditions.icon} />
           ) : (
             <Skeleton width="120px" height="100px" />
           )}
         </StyledIconWrapper>
         <StyledTemperature>
-          {temperature?.main ? (
-            <span data-test="temperature">{temperature.main}°C</span>
-          ) : (
-            <Skeleton width="50px" />
-          )}
+          <SwitchTransition>
+            <CSSTransition
+              key={temperature?.main ? 'loaded' : 'loading'}
+              classNames="fade"
+              timeout={500}
+            >
+              <span data-test="temperature">
+                {temperature?.main ? (
+                  <span>{temperature.main}°C</span>
+                ) : (
+                  <Skeleton width="115px" />
+                )}
+              </span>
+            </CSSTransition>
+          </SwitchTransition>
         </StyledTemperature>
-        <StyledDescription data-test="description">
-          {conditions?.description ? (
-            <span>{conditions.description}</span>
-          ) : (
-            <Skeleton width="150px" />
-          )}
+        <StyledDescription>
+          <SwitchTransition>
+            <CSSTransition
+              key={conditions?.description ? 'loaded' : 'loading'}
+              classNames="fade"
+              timeout={500}
+            >
+              <span data-test="description">
+                {conditions?.description || <Skeleton width="126px" />}
+              </span>
+            </CSSTransition>
+          </SwitchTransition>
         </StyledDescription>
         <StyledData>
           <StyledDataHeading>Wind:</StyledDataHeading>
-          {wind?.speed && wind.speed + 'km/h'}
-          {wind?.direction && (
-            <WindDirection
-              data-test="wind"
-              deg={wind.direction}
-              size="1.4rem"
-            />
-          )}
-          {(!wind || !wind.speed || !wind.direction) && (
-            <Skeleton width="80px" />
-          )}
+          <SwitchTransition>
+            <CSSTransition
+              key={
+                (wind?.speed || wind?.speed === 0) &&
+                (wind?.direction || wind?.direction === 0)
+                  ? 'loaded'
+                  : 'loading'
+              }
+              classNames="fade"
+              timeout={500}
+            >
+              <span>
+                {(wind?.speed || wind?.speed === 0) && wind.speed + 'km/h'}
+                {(wind?.direction || wind?.direction === 0) && (
+                  <WindDirection
+                    data-test="wind"
+                    deg={wind.direction}
+                    size="2rem"
+                  />
+                )}
+                {((!wind?.speed && wind?.speed !== 0) ||
+                  (!wind.direction && wind?.direction !== 0)) && (
+                  <Skeleton width="80px" />
+                )}
+              </span>
+            </CSSTransition>
+          </SwitchTransition>
         </StyledData>
         <StyledData>
           <StyledDataHeading>Humidity:</StyledDataHeading>
-          {humidity ? (
-            <span data-test="humidity">{humidity} %</span>
-          ) : (
-            <Skeleton width="80px" />
-          )}
+          <SwitchTransition>
+            <CSSTransition
+              key={humidity ? 'loaded' : 'loading'}
+              classNames="fade"
+              timeout={500}
+            >
+              <span data-test="humidity">
+                {humidity ? (
+                  <span>{humidity} %</span>
+                ) : (
+                  <Skeleton width="80px" />
+                )}
+              </span>
+            </CSSTransition>
+          </SwitchTransition>
         </StyledData>
       </StyledInfo>
 
       <StyledAdditionalInfo>
         <StyledAdditionalInfoDt>Temperature:</StyledAdditionalInfoDt>
-        <StyledAdditionalInfoDd data-test="temperature-min">
-          {temperature?.min ? (
-            <span>Min: {temperature.min}°C</span>
-          ) : (
-            <Skeleton width="100%" />
-          )}
+        <StyledAdditionalInfoDd>
+          <SwitchTransition>
+            <CSSTransition
+              key={temperature?.min ? 'loaded' : 'loading'}
+              classNames="fade"
+              timeout={500}
+            >
+              <span data-test="temperature-min">
+                {temperature?.min ? (
+                  <span>Min: {temperature.min}°C</span>
+                ) : (
+                  <Skeleton width="100%" />
+                )}
+              </span>
+            </CSSTransition>
+          </SwitchTransition>
         </StyledAdditionalInfoDd>
-        <StyledAdditionalInfoDd data-test="temperature-max">
-          {temperature?.max ? (
-            <span>Max: {temperature.max}°C</span>
-          ) : (
-            <Skeleton width="100%" />
-          )}
+        <StyledAdditionalInfoDd>
+          <SwitchTransition>
+            <CSSTransition
+              key={temperature?.max ? 'loaded' : 'loading'}
+              classNames="fade"
+              timeout={500}
+            >
+              <span data-test="temperature-max">
+                {temperature?.max ? (
+                  <span>Max: {temperature.max}°C</span>
+                ) : (
+                  <Skeleton width="100%" />
+                )}
+              </span>
+            </CSSTransition>
+          </SwitchTransition>
         </StyledAdditionalInfoDd>
-        <StyledAdditionalInfoDd data-test="temperature-feels-like">
-          {temperature?.feelsLike ? (
-            <span>Feels like: {temperature.feelsLike}°C</span>
-          ) : (
-            <Skeleton width="100%" />
-          )}
+        <StyledAdditionalInfoDd>
+          <SwitchTransition>
+            <CSSTransition
+              key={temperature?.feelsLike ? 'loaded' : 'loading'}
+              classNames="fade"
+              timeout={500}
+            >
+              <span data-test="temperature-feels-like">
+                {temperature?.max ? (
+                  <span>Feels like: {temperature.feelsLike}°C</span>
+                ) : (
+                  <Skeleton width="100%" />
+                )}
+              </span>
+            </CSSTransition>
+          </SwitchTransition>
         </StyledAdditionalInfoDd>
       </StyledAdditionalInfo>
     </Card>
   );
 };
 
-CurrentWeather.propTypes = ForecastTypes;
+CurrentWeather.propTypes = {
+  ...ForecastTypes,
+  maxWidth: PropTypes.string
+};
+
+CurrentWeather.defaultProps = {
+  maxWidth: '100%'
+};
 
 export default CurrentWeather;
