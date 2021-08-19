@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { gql, useQuery } from '@apollo/client';
 import { breakpoints } from '../../../styles/breakpoints';
@@ -7,6 +9,7 @@ import CurrentWeather from '../../../components/CurrentWeather';
 import ForecastCards from '../../../components/ForecastCards';
 import CityInfo from '../../../components/CityInfo';
 import Page from '../../../components/Page';
+import backgroundHelper from '../../../helpers/background';
 
 const GET_CURRENT_WEATHER = gql`
   query GetCurrentWeather($city: String!) {
@@ -110,7 +113,7 @@ const StyledColumn = styled.div`
   grid-area: ${({ area }) => area};
 `;
 
-const Weather = () => {
+const Weather = ({ changeTheme }) => {
   const router = useRouter();
   const { city } = router.query;
   const { loading, error, data } = useQuery(GET_CURRENT_WEATHER, {
@@ -120,6 +123,13 @@ const Weather = () => {
     }
   });
   const title = prepareTitle(city);
+
+  useEffect(() => {
+    const icon = data?.currentWeather?.conditions?.icon;
+    if (icon) {
+      changeTheme(backgroundHelper(icon));
+    }
+  }, [data]);
 
   return (
     <Page subtitle={title} withSubtitle={true}>
@@ -153,5 +163,9 @@ const Weather = () => {
     </Page>
   );
 };
+
+Weather.propTypes = {
+  changeTheme: PropTypes.func.isRequired
+}
 
 export default Weather;

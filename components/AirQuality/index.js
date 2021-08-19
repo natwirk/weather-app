@@ -10,6 +10,8 @@ const StyledItems = styled.ul`
   list-style-type: none;
   margin: 2rem 0 0;
   padding: 0;
+  color: ${({ loaded, theme }) =>
+    loaded ? theme.color.secondary : theme.color.primary};
 `;
 
 const StyledItem = styled.li`
@@ -28,12 +30,14 @@ const AirQuality = ({ pm2_5, pm10, qualityIndex }) => {
       background={quality.get(qualityIndex)?.background}
       data-test="component-air-quality"
     >
-      <StyledTitle>Air Quality</StyledTitle>
-      <StyledItems>
+      <StyledTitle color={qualityIndex ? 'secondary' : 'primary'}>
+        Air Quality
+      </StyledTitle>
+      <StyledItems loaded={qualityIndex}>
         <StyledItem>
           <SwitchTransition>
             <CSSTransition
-              key={quality.get(qualityIndex)?.text ? 'loaded' : 'loading'}
+              key={qualityIndex ? 'loaded' : 'loading'}
               classNames="fade"
               timeout={500}
             >

@@ -9,10 +9,11 @@ export const StyledHeading = styled.h2`
 `;
 
 export const StyledTitle = styled.h3`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ color, theme }) => theme.color[color] || theme.color.primary};
   text-align: center;
   font-size: 2.2rem;
   margin-bottom: 2rem;
+  transition: color 200ms ease-in-out;
 `;
 
 export const AnimatedText = styled.span`

@@ -52,7 +52,6 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  background: 'rgba(255, 255, 255, 0.15)',
   center: false,
   small: false,
   width: '100%',
