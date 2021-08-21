@@ -83,16 +83,24 @@ const CurrentWeather = ({
     >
       <StyledInfo>
         <StyledIconWrapper>
-          {conditions?.icon ? (
-            <Icon data-test="icon" width="120px" code={conditions.icon} />
-          ) : (
-            <Skeleton width="120px" height="100px" />
-          )}
+          <SwitchTransition>
+            <CSSTransition
+              key={conditions?.icon}
+              classNames="fade"
+              timeout={500}
+            >
+              {conditions?.icon ? (
+                <Icon data-test="icon" width="120px" code={conditions.icon} />
+              ) : (
+                <Skeleton width="120px" height="100px" />
+              )}
+            </CSSTransition>
+          </SwitchTransition>
         </StyledIconWrapper>
         <StyledTemperature>
           <SwitchTransition>
             <CSSTransition
-              key={temperature?.main ? 'loaded' : 'loading'}
+              key={temperature?.main}
               classNames="fade"
               timeout={500}
             >
@@ -109,7 +117,7 @@ const CurrentWeather = ({
         <StyledDescription>
           <SwitchTransition>
             <CSSTransition
-              key={conditions?.description ? 'loaded' : 'loading'}
+              key={conditions?.description}
               classNames="fade"
               timeout={500}
             >
@@ -152,11 +160,7 @@ const CurrentWeather = ({
         <StyledData>
           <StyledDataHeading>Humidity:</StyledDataHeading>
           <SwitchTransition>
-            <CSSTransition
-              key={humidity ? 'loaded' : 'loading'}
-              classNames="fade"
-              timeout={500}
-            >
+            <CSSTransition key={humidity} classNames="fade" timeout={500}>
               <span data-test="humidity">
                 {humidity ? (
                   <span>{humidity} %</span>
@@ -174,7 +178,7 @@ const CurrentWeather = ({
         <StyledAdditionalInfoDd>
           <SwitchTransition>
             <CSSTransition
-              key={temperature?.min ? 'loaded' : 'loading'}
+              key={temperature?.min}
               classNames="fade"
               timeout={500}
             >
@@ -191,7 +195,7 @@ const CurrentWeather = ({
         <StyledAdditionalInfoDd>
           <SwitchTransition>
             <CSSTransition
-              key={temperature?.max ? 'loaded' : 'loading'}
+              key={temperature?.max}
               classNames="fade"
               timeout={500}
             >
@@ -208,7 +212,7 @@ const CurrentWeather = ({
         <StyledAdditionalInfoDd>
           <SwitchTransition>
             <CSSTransition
-              key={temperature?.feelsLike ? 'loaded' : 'loading'}
+              key={temperature?.feelsLike}
               classNames="fade"
               timeout={500}
             >

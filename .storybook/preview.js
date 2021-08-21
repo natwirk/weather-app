@@ -16,7 +16,7 @@ export const onThemeSwitch = context => {
     },
   };
   return {
-    parameters,
+    parameters
   };
 };
 

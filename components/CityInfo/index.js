@@ -55,11 +55,7 @@ const CityInfo = ({
     <div data-test="component-city-info">
       <StyledHeading align="left">
         <SwitchTransition>
-          <CSSTransition
-            key={name && country ? 'loaded' : 'loading'}
-            classNames="fade"
-            timeout={500}
-          >
+          <CSSTransition key={name && country} classNames="fade" timeout={500}>
             <span data-test="name">
               {name || <Skeleton width={200} />},{' '}
               {country || <Skeleton width={40} />}
@@ -69,11 +65,7 @@ const CityInfo = ({
       </StyledHeading>
       <StyledTime>
         <SwitchTransition>
-          <CSSTransition
-            key={time ? 'loaded' : 'loading'}
-            classNames="fade"
-            timeout={500}
-          >
+          <CSSTransition key={time} classNames="fade" timeout={500}>
             <span data-test="time">{time || <Skeleton width={200} />}</span>
           </CSSTransition>
         </SwitchTransition>
@@ -83,11 +75,7 @@ const CityInfo = ({
           <StyledCoordinatesTitle>Latitude</StyledCoordinatesTitle>
           <StyledCoordinatesValue>
             <SwitchTransition>
-              <CSSTransition
-                key={latitude ? 'loaded' : 'loading'}
-                classNames="fade"
-                timeout={500}
-              >
+              <CSSTransition key={latitude} classNames="fade" timeout={500}>
                 <span data-test="latitude">
                   {latitude || <Skeleton width={70} />}
                 </span>
@@ -99,11 +87,7 @@ const CityInfo = ({
           <StyledCoordinatesTitle>Longitude</StyledCoordinatesTitle>
           <StyledCoordinatesValue>
             <SwitchTransition>
-              <CSSTransition
-                key={longitude ? 'loaded' : 'loading'}
-                classNames="fade"
-                timeout={500}
-              >
+              <CSSTransition key={longitude} classNames="fade" timeout={500}>
                 <span data-test="longitude">
                   {longitude || <Skeleton width={70} />}
                 </span>
@@ -115,11 +99,7 @@ const CityInfo = ({
           <StyledCoordinatesTitle>Sunrise</StyledCoordinatesTitle>
           <StyledCoordinatesValue>
             <SwitchTransition>
-              <CSSTransition
-                key={sunrise ? 'loaded' : 'loading'}
-                classNames="fade"
-                timeout={500}
-              >
+              <CSSTransition key={sunrise} classNames="fade" timeout={500}>
                 <span data-test="sunrise">
                   {sunrise || <Skeleton width={70} />}
                 </span>
@@ -131,11 +111,7 @@ const CityInfo = ({
           <StyledCoordinatesTitle>Sunset</StyledCoordinatesTitle>
           <StyledCoordinatesValue>
             <SwitchTransition>
-              <CSSTransition
-                key={sunset ? 'loaded' : 'loading'}
-                classNames="fade"
-                timeout={500}
-              >
+              <CSSTransition key={sunset} classNames="fade" timeout={500}>
                 <span data-test="sunset">
                   {sunset || <Skeleton width={70} />}
                 </span>

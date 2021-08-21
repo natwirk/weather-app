@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
@@ -20,7 +21,7 @@ const Header = ({ subtitle, title, withSubtitle }) => (
   <StyledHeader>
     <Wrapper>
       <StyledHeading>
-        {title} {withSubtitle && '– '}
+        <Link href="/">{title}</Link> {withSubtitle && '– '}
         <SwitchTransition>
           <CSSTransition
             key={withSubtitle && subtitle ? 'loaded' : 'loading'}
@@ -28,7 +29,7 @@ const Header = ({ subtitle, title, withSubtitle }) => (
             timeout={500}
           >
             <span>
-              {withSubtitle && subtitle ? subtitle : <Skeleton width={100} />}
+              {subtitle || (withSubtitle ? <Skeleton width={100} /> : '')}
             </span>
           </CSSTransition>
         </SwitchTransition>

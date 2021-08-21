@@ -31,7 +31,36 @@ a {
    opacity: 0;
 }
 
-[class^="fade"] {
-     transition: opacity 500ms ease-in-out;
+[class*="fade-"] {
+  transition: opacity 500ms ease-in-out;
+}
+
+.page-exit,
+.page-enter-active {
+   opacity: 1;
+}
+
+.page-enter,
+.page-exit-active {
+   opacity: 0;
+}
+
+.page-enter
+.page-enter-active,
+.page-enter-done {
+  position: relative;
+  z-index: 2;
+  transition: opacity 500ms ease-in-out;
+}
+
+.page-exit,
+.page-exit-active,
+.page-exit-done {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  transition: opacity 500ms ease-in-out 300ms;
 }
 `;

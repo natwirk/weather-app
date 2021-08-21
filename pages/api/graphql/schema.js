@@ -8,6 +8,15 @@ const typeDefs = gql`
     pm10: Float
     qualityIndex: Int
   }
+  type City {
+    id: String
+    name: String
+    country: String
+  }
+  type Cities {
+    searchValue: String
+    items: [City]
+  }
   type Conditions {
     name: String
     description: String
@@ -61,6 +70,7 @@ const typeDefs = gql`
   }
   type Query {
     airPollution(latitude: Float!, longitude: Float!): AirPollution
+    cities(query: String!): Cities
     currentWeather(city: String!): CurrentWeather
     futureWeather(city: String!): FutureWeather
   }

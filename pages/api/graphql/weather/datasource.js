@@ -1,5 +1,5 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
-import { formatDate, formatTime } from './helpers';
+import { formatDate, formatTime } from '../helpers';
 import { nanoid } from 'nanoid';
 
 class OpenWeatherMapAPI extends RESTDataSource {
@@ -8,16 +8,16 @@ class OpenWeatherMapAPI extends RESTDataSource {
     this.baseURL = 'http://api.openweathermap.org/data/2.5';
   }
 
-  getAirPollution = async ({ latitude, longitude }) => {
+  getAirQuality = async ({ latitude, longitude }) => {
     const response = await this.get('air_pollution', {
       lat: latitude,
       lon: longitude,
       appid: process.env.API_KEY
     });
-    return this.airPollutionReducer(response, latitude, longitude);
+    return this.airQualityReducer(response, latitude, longitude);
   };
 
-  airPollutionReducer = (result, latitude, longitude) => {
+  airQualityReducer = (result, latitude, longitude) => {
     return {
       id: `${result.list[0].dt}_${latitude}_${longitude}`,
       coordinates: {
@@ -46,7 +46,7 @@ class OpenWeatherMapAPI extends RESTDataSource {
     } = result;
     return {
       id: result.id || 0,
-      airPollution: this.getAirPollution({
+      airPollution: this.getAirQuality({
         latitude,
         longitude
       }),
