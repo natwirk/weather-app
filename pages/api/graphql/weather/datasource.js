@@ -1,5 +1,6 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
-import { formatDate, formatTime } from './helpers';
+import { formatDate, formatTime } from '../helpers';
+import { nanoid } from 'nanoid';
 
 class OpenWeatherMapAPI extends RESTDataSource {
   constructor() {
@@ -7,16 +8,16 @@ class OpenWeatherMapAPI extends RESTDataSource {
     this.baseURL = 'http://api.openweathermap.org/data/2.5';
   }
 
-  getAirPollution = async ({ latitude, longitude }) => {
+  getAirQuality = async ({ latitude, longitude }) => {
     const response = await this.get('air_pollution', {
       lat: latitude,
       lon: longitude,
       appid: process.env.API_KEY
     });
-    return this.airPollutionReducer(response, latitude, longitude);
+    return this.airQualityReducer(response, latitude, longitude);
   };
 
-  airPollutionReducer = (result, latitude, longitude) => {
+  airQualityReducer = (result, latitude, longitude) => {
     return {
       id: `${result.list[0].dt}_${latitude}_${longitude}`,
       coordinates: {
@@ -24,7 +25,8 @@ class OpenWeatherMapAPI extends RESTDataSource {
         longitude
       },
       pm2_5: result.list[0].components.pm2_5,
-      pm10: result.list[0].components.pm10
+      pm10: result.list[0].components.pm10,
+      qualityIndex: result.list[0].main.aqi
     };
   };
 
@@ -38,9 +40,20 @@ class OpenWeatherMapAPI extends RESTDataSource {
   };
 
   currentWeatherReducer = (result, city) => {
-    const { timezone } = result;
+    const {
+      coord: { lat: latitude, lon: longitude },
+      timezone
+    } = result;
     return {
       id: result.id || 0,
+      airPollution: this.getAirQuality({
+        latitude,
+        longitude
+      }),
+      coordinates: {
+        latitude,
+        longitude
+      },
       location: {
         city: result.name ? result.name : city,
         country: result.sys.country,
@@ -55,10 +68,10 @@ class OpenWeatherMapAPI extends RESTDataSource {
       date: formatDate(result.dt, timezone),
       humidity: result.main.humidity,
       temperature: {
-        main: result.main.temp,
-        min: result.main.temp_min,
-        max: result.main.temp_max,
-        feelsLike: result.main.feels_like
+        main: Math.round(result.main.temp),
+        min: Math.round(result.main.temp_min),
+        max: Math.round(result.main.temp_max),
+        feelsLike: Math.round(result.main.feels_like)
       },
       wind: {
         direction: result.wind.deg,
@@ -90,6 +103,7 @@ class OpenWeatherMapAPI extends RESTDataSource {
         sunset: formatTime(result.city.sunset, timezone)
       },
       forecast: result.list.map(element => ({
+        id: nanoid(),
         conditions: {
           name: element.weather[0].main,
           description: element.weather[0].description,
@@ -98,10 +112,10 @@ class OpenWeatherMapAPI extends RESTDataSource {
         date: formatDate(element.dt, timezone),
         humidity: element.main.humidity,
         temperature: {
-          main: element.main.temp,
-          min: element.main.temp_min,
-          max: element.main.temp_max,
-          feelsLike: element.main.feels_like
+          main: Math.round(element.main.temp),
+          min: Math.round(element.main.temp_min),
+          max: Math.round(element.main.temp_max),
+          feelsLike: Math.round(element.main.feels_like)
         },
         wind: {
           direction: element.wind.deg,

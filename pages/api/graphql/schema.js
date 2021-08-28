@@ -6,6 +6,16 @@ const typeDefs = gql`
     coordinates: Coordinates
     pm2_5: Float
     pm10: Float
+    qualityIndex: Int
+  }
+  type City {
+    id: String
+    name: String
+    country: String
+  }
+  type Cities {
+    searchValue: String
+    items: [City]
   }
   type Conditions {
     name: String
@@ -18,8 +28,10 @@ const typeDefs = gql`
   }
   type CurrentWeather {
     id: ID!
+    airPollution: AirPollution
     location: Location
     conditions: Conditions
+    coordinates: Coordinates
     date: String
     humidity: Int
     temperature: Temperature
@@ -27,6 +39,7 @@ const typeDefs = gql`
     time: String
   }
   type Forecast {
+    id: String
     conditions: Conditions
     date: String
     humidity: Int
@@ -46,10 +59,10 @@ const typeDefs = gql`
     forecast: [Forecast]
   }
   type Temperature {
-    feelsLike: Float
-    main: Float
-    min: Float
-    max: Float
+    feelsLike: Int
+    main: Int
+    min: Int
+    max: Int
   }
   type Wind {
     direction: Int
@@ -57,6 +70,7 @@ const typeDefs = gql`
   }
   type Query {
     airPollution(latitude: Float!, longitude: Float!): AirPollution
+    cities(query: String!): Cities
     currentWeather(city: String!): CurrentWeather
     futureWeather(city: String!): FutureWeather
   }
