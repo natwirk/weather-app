@@ -36,7 +36,7 @@ a {
 }
 
 .page-exit,
-.page-enter-active {
+.page-enter-done {
    opacity: 1;
 }
 

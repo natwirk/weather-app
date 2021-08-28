@@ -31,7 +31,7 @@ function App({ Component, pageProps }) {
             <CSSTransition
               key={router.pathname}
               classNames="page"
-              timeout={500}
+              timeout={800}
             >
               <Component {...pageProps} changeTheme={changeTheme} />
             </CSSTransition>
