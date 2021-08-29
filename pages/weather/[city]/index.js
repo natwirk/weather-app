@@ -50,7 +50,7 @@ const GET_CURRENT_WEATHER = gql`
         direction
       }
     }
-    futureWeather(city: "Kraków") {
+    futureWeather(city: $city) {
       id
       forecast {
         id
