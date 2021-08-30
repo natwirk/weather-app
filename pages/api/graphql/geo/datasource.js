@@ -1,7 +1,7 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 import { nanoid } from 'nanoid';
 
-class OpenWeatherGeoAPI extends RESTDataSource {
+class OpenWeatherMapGeoAPI extends RESTDataSource {
   constructor() {
     super();
     this.baseURL = 'http://api.openweathermap.org/geo/1.0';
@@ -28,4 +28,4 @@ class OpenWeatherGeoAPI extends RESTDataSource {
   };
 }
 
-export default OpenWeatherGeoAPI;
+export default OpenWeatherMapGeoAPI;

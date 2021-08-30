@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { opacity } from '../../styles/keyframes';
 
+export const AnimatedText = styled.span`
+  opacity: 0;
+  animation: ${opacity} 0.5s linear 1s forwards;
+`;
+
 export const StyledHeading = styled.h2`
   color: ${({ theme }) => theme.color.primary};
   text-align: ${({ align }) => align || 'center'};
@@ -16,7 +21,6 @@ export const StyledTitle = styled.h3`
   transition: color 200ms ease-in-out;
 `;
 
-export const AnimatedText = styled.span`
-  opacity: 0;
-  animation: ${opacity} 0.5s linear 1s forwards;
+export const StyledText = styled.p`
+  font-size: 2rem;
 `;

@@ -15,7 +15,7 @@ const GET_CURRENT_WEATHER = gql`
   query GetCurrentWeather($city: String!) {
     currentWeather(city: $city) {
       id
-      airPollution {
+      airQuality {
         id
         pm2_5
         pm10
@@ -190,7 +190,11 @@ const Weather = ({ changeTheme }) => {
               />
             </StyledColumn>
             <StyledColumn area="air-quality">
-              <AirQuality {...data?.currentWeather?.airPollution} />
+              <AirQuality
+                pm2_5={data?.currentWeather?.airQuality?.pm2_5}
+                pm10={data?.currentWeather?.airQuality?.pm10}
+                qualityIndex={data?.currentWeather?.airQuality.qualityIndex}
+              />
             </StyledColumn>
             <StyledColumn area="future-weather">
               <ForecastCards forecast={data?.futureWeather?.forecast} />
