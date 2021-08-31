@@ -1,6 +1,7 @@
 import Page from '../components/Page';
 import styled from 'styled-components';
 import Search from '../components/Search';
+import CitiesList from '../components/CitiesList';
 import { StyledHeading, StyledText } from '../components/Typography';
 
 const StyledWrapper = styled.div`
@@ -8,7 +9,7 @@ const StyledWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 10%;
+  margin-top: 8%;
 `;
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
             <StyledText>Please select from cities below:</StyledText>
           </>
         )}
+        <CitiesList />
       </StyledWrapper>
     </Page>
   );

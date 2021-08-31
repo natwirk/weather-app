@@ -42,20 +42,20 @@ test('renders input', () => {
   expect(component.length).toBe(1);
 });
 
-test('waits 500ms on input change', () => {
-  let event;
-  jest.useFakeTimers();
-  const input = findByTestAttribute(wrapper, 'input').hostNodes();
-  input.simulate('change', event);
-  expect(setTimeout).toHaveBeenCalledTimes(1);
-  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 500);
-  jest.useRealTimers();
-});
-
 describe('on loading', () => {
-  React.useState = jest.fn().mockReturnValue(['London', {}]);
-  beforeEach(() => {
+  const event = {
+    target: {
+      value: 'London'
+    }
+  };
+  beforeEach(async () => {
     wrapper = setup({ mocks });
+    const component = findByTestAttribute(wrapper, 'input').hostNodes();
+    component.simulate('change', event);
+    await act(async () => {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      wrapper.update();
+    });
   });
   test('renders loader', () => {
     const component = findByTestAttribute(wrapper, 'loader').hostNodes();
@@ -68,11 +68,18 @@ describe('on loading', () => {
 });
 
 describe('on loaded', () => {
-  let wrapper;
+  const event = {
+    target: {
+      value: 'London'
+    }
+  };
   beforeEach(async () => {
     wrapper = setup({ mocks });
-    React.useState = jest.fn().mockReturnValue(['London', {}]);
+    const component = findByTestAttribute(wrapper, 'input').hostNodes();
+    component.simulate('change', event);
     await act(async () => {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      wrapper.update();
       await new Promise(resolve => setTimeout(resolve, 0));
       wrapper.update();
     });

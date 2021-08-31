@@ -50,7 +50,7 @@ const StyledFlipCardContent = styled.div`
 const FlipCard = ({ center, children, height, small, width, ...props }) => {
   const [flip, setFlip] = useState(false);
 
-  const onClick = () => {
+  const handleClick = () => {
     setFlip(!flip);
   };
 
@@ -61,7 +61,7 @@ const FlipCard = ({ center, children, height, small, width, ...props }) => {
       height={height}
       width={width}
       flip={flip}
-      onClick={onClick}
+      onClick={handleClick}
       {...props}
     >
       <StyledFlipCardInner flip={flip}>

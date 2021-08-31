@@ -159,7 +159,7 @@ const Weather = ({ changeTheme }) => {
     if (icon) {
       changeTheme(backgroundHelper(icon));
     }
-  }, [data]);
+  }, [changeTheme, data]);
 
   const onBackClick = () => {
     router.push('/');
