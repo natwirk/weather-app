@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Wrapper from '../Wrapper';
 
 const StyledMain = styled.main`
-  color: ${({ theme }) => theme.color};
+  color: ${({ theme }) => theme.color.primary};
 `;
 
 const Main = ({ children }) => (

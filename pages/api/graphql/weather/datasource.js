@@ -17,18 +17,16 @@ class OpenWeatherMapAPI extends RESTDataSource {
     return this.airQualityReducer(response, latitude, longitude);
   };
 
-  airQualityReducer = (result, latitude, longitude) => {
-    return {
-      id: `${result.list[0].dt}_${latitude}_${longitude}`,
-      coordinates: {
-        latitude,
-        longitude
-      },
-      pm2_5: result.list[0].components.pm2_5,
-      pm10: result.list[0].components.pm10,
-      qualityIndex: result.list[0].main.aqi
-    };
-  };
+  airQualityReducer = (result, latitude, longitude) => ({
+    id: `${result.list[0].dt}_${latitude}_${longitude}`,
+    coordinates: {
+      latitude,
+      longitude
+    },
+    pm2_5: result.list[0].components.pm2_5,
+    pm10: result.list[0].components.pm10,
+    qualityIndex: result.list[0].main.aqi
+  });
 
   getCurrentWeather = async ({ city }) => {
     const response = await this.get('weather', {
@@ -46,7 +44,7 @@ class OpenWeatherMapAPI extends RESTDataSource {
     } = result;
     return {
       id: result.id || 0,
-      airPollution: this.getAirQuality({
+      airQuality: this.getAirQuality({
         latitude,
         longitude
       }),
