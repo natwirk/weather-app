@@ -9,7 +9,6 @@ const StyledCoordinates = styled.ul`
   margin: 0;
   padding: 0;
   list-style-type: none;
-  color: ${({ theme }) => theme.color.primary};
   @media ${breakpoints.sm} {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -36,7 +35,6 @@ const StyledCoordinatesValue = styled.span`
 
 const StyledTime = styled.span`
   display: block;
-  color: ${({ theme }) => theme.color.primary};
   font-weight: 700;
   font-size: 3.6rem;
   margin-bottom: 2rem;

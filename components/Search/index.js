@@ -9,17 +9,18 @@ import { rotate } from '../../styles/keyframes';
 
 const StyledSearch = styled.div`
   max-width: 300px;
+  z-index: 10;
   @media ${breakpoints.sm} {
     max-width: 450px;
   }
 
-  ${({ active }) =>
+  ${({ active, theme }) =>
     active &&
     `
   &:after {
     content: "";
     position: fixed;
-    background: rgba(0, 0, 80, 0.2);
+    background: ${theme.background.overlay};
     display: block;
     width: ${window.innerWidth}px;
     height: ${window.innerHeight}px;
@@ -59,12 +60,14 @@ const StyledInput = styled.input`
   padding: 1rem;
   color: ${({ theme }) => theme.color.primary};
   border-bottom: 2px solid ${({ theme }) => theme.color.primary};
+  transition: border-color 300ms ease-in-out 1000ms color 30ms ease-in-out 1000ms;
   width: 100%;
   position: relative;
   z-index: 10;
   background ${({ theme }) => theme.background.page};
   &::placeholder {
     color: ${({ theme }) => theme.color.primary};
+    transition: color 30ms ease-in-out 1000ms;
     opacity: 0.6;
   }
 `;

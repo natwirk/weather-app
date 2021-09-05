@@ -74,9 +74,12 @@ const StyledButton = styled.button`
   transition: background;
   width: 100%;
   min-height: 50px;
-  transition: background 100ms ease-in-out;
+  transition: background 100ms ease-in-out, color 200ms ease-in-out;
   border-radius: 4px;
   border: 1px solid transparent;
+  background: ${({ theme }) => theme.background.primary};
+  color: ${({ theme }) => theme.color.primary};
+  opacity: 0.8;
   &:before,
   &:after {
     content: '';
@@ -103,8 +106,8 @@ const StyledButton = styled.button`
     border-left-color: transparent;
   }
   &:hover {
-    background: ${({ theme }) => theme.background.primary};
-    transition: background 100ms ease-in-out 250ms;
+    background: transparent;
+    transition: background 100ms ease-in-out;
     &:before,
     &:after {
       width: 20px;

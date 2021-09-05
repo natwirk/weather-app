@@ -7,7 +7,6 @@ export const AnimatedText = styled.span`
 `;
 
 export const StyledHeading = styled.h2`
-  color: ${({ theme }) => theme.color.primary};
   text-align: ${({ align }) => align || 'center'};
   font-size: 4.8rem;
   margin: 0 0 2rem;
@@ -18,7 +17,7 @@ export const StyledTitle = styled.h3`
   text-align: center;
   font-size: 2.2rem;
   margin-bottom: 2rem;
-  transition: color 200ms ease-in-out;
+  transition: color 1500ms ease-in-out 1000ms;
 `;
 
 export const StyledText = styled.p`
