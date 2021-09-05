@@ -4,6 +4,11 @@ import Search from '../components/Search';
 import CitiesList from '../components/CitiesList';
 import { StyledHeading, StyledText } from '../components/Typography';
 
+const StyledHeadingText = styled.span`
+  position: relative;
+  z-index: 20;
+`;
+
 const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -19,7 +24,9 @@ const Home = () => {
       <StyledWrapper>
         {hasApiKey ? (
           <>
-            <StyledHeading>Search city...</StyledHeading>
+            <StyledHeading>
+              <StyledHeadingText>Search city...</StyledHeadingText>
+            </StyledHeading>
             <Search />
           </>
         ) : (

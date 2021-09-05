@@ -9,17 +9,18 @@ import { rotate } from '../../styles/keyframes';
 
 const StyledSearch = styled.div`
   max-width: 300px;
+  z-index: 10;
   @media ${breakpoints.sm} {
     max-width: 450px;
   }
 
-  ${({ active }) =>
+  ${({ active, theme }) =>
     active &&
     `
   &:after {
     content: "";
     position: fixed;
-    background: rgba(0, 0, 80, 0.2);
+    background: ${theme.background.overlay};
     display: block;
     width: ${window.innerWidth}px;
     height: ${window.innerHeight}px;

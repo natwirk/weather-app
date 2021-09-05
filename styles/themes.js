@@ -5,7 +5,8 @@ const themes = {
       button: 'rgba(0, 0, 0, 0.4)',
       buttonHover: 'rgba(0, 0, 0, 0.5)',
       page: 'rgba(31, 40, 130, 1)',
-      primary: 'rgba(0, 0, 0, 0.3)'
+      primary: 'rgba(0, 0, 0, 0.3)',
+      overlay: 'rgba(0, 0, 30, 0.6)'
     },
     color: {
       primary: 'rgba(255, 255, 255, 0.88)',
@@ -25,7 +26,8 @@ const themes = {
       button: 'rgba(0, 0, 0, 0.4)',
       buttonHover: 'rgba(0, 0, 0, 0.5)',
       page: 'rgba(39, 75, 143, 1)',
-      primary: 'rgba(0, 0, 0, 0.3)'
+      primary: 'rgba(0, 0, 0, 0.3)',
+      overlay: 'rgba(0, 0, 30, 0.55)'
     },
     color: {
       primary: 'rgba(255, 255, 255, 0.88)',
@@ -45,7 +47,8 @@ const themes = {
       button: 'rgba(0, 0, 0, 0.4)',
       buttonHover: 'rgba(0, 0, 0, 0.5)',
       page: 'rgba(49, 52, 77, 1)',
-      primary: 'rgba(0, 0, 0, 0.3)'
+      primary: 'rgba(0, 0, 0, 0.3)',
+      overlay: 'rgba(0, 0, 0, 0.6)'
     },
     color: {
       primary: 'rgba(255, 255, 255, 0.88)',
@@ -65,7 +68,8 @@ const themes = {
       button: 'rgba(255, 255, 255, 0.4)',
       buttonHover: 'rgba(255, 255, 255, 0.5)',
       page: 'rgba(87, 152, 222, 1)',
-      primary: 'rgba(255, 255, 255, 0.15)'
+      primary: 'rgba(255, 255, 255, 0.15)',
+      overlay: 'rgba(0, 0, 80, 0.2)'
     },
     color: {
       primary: 'rgba(0, 0, 0, 0.88)',
@@ -85,7 +89,8 @@ const themes = {
       button: 'rgba(255, 255, 255, 0.4)',
       buttonHover: 'rgba(255, 255, 255, 0.5)',
       page: 'rgba(152, 178, 228, 1)',
-      primary: 'rgba(255, 255, 255, 0.15)'
+      primary: 'rgba(255, 255, 255, 0.15)',
+      overlay: 'rgba(0, 0, 80, 0.3)'
     },
     color: {
       primary: 'rgba(0, 0, 0, 0.88)',
@@ -105,7 +110,8 @@ const themes = {
       button: 'rgba(255, 255, 255, 0.4)',
       buttonHover: 'rgba(255, 255, 255, 0.5)',
       page: 'rgba(143, 147, 189, 1)',
-      primary: 'rgba(255, 255, 255, 0.15)'
+      primary: 'rgba(255, 255, 255, 0.15)',
+      overlay: 'rgba(0, 0, 80, 0.3)'
     },
     color: {
       primary: 'rgba(0, 0, 0, 0.88)',
