@@ -5,12 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './components/Main';
 
-const defaultBackground = 'rgba(152, 178, 228, 1)';
-
 const StyledPage = styled.div`
-  background: ${({ theme }) => theme?.background?.page || defaultBackground};
-  transition: background 2000ms ease-in-out;
-  will-change: background;
   min-height: 100vh;
   position: relative;
 `;

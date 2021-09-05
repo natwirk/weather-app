@@ -10,6 +10,13 @@ const themes = {
     color: {
       primary: 'rgba(255, 255, 255, 0.88)',
       secondary: 'rgba(31, 40, 130, 1)'
+    },
+    airQuality: {
+      good: 'rgba(40, 255, 150, 0.85)',
+      fair: 'rgba(180, 228, 77, 0.9)',
+      moderate: 'rgba(249, 220, 92, 0.88)',
+      poor: 'rgba(239, 105, 96, 0.9)',
+      very_poor: 'rgba(226, 116, 251, 0.85)'
     }
   },
   darkDefault: {
@@ -22,7 +29,14 @@ const themes = {
     },
     color: {
       primary: 'rgba(255, 255, 255, 0.88)',
-      secondary: 'rgba(39, 75, 143, 1)'
+      secondary: 'rgba(19, 55, 123, 1)'
+    },
+    airQuality: {
+      good: 'rgba(40, 255, 150, 0.85)',
+      fair: 'rgba(180, 228, 77, 0.95)',
+      moderate: 'rgba(249, 220, 92, 0.98)',
+      poor: 'rgba(239, 93, 96, 0.95)',
+      very_poor: 'rgba(235, 116, 251, 0.85)'
     }
   },
   darkGray: {
@@ -36,6 +50,13 @@ const themes = {
     color: {
       primary: 'rgba(255, 255, 255, 0.88)',
       secondary: 'rgba(49, 52, 77, 1)'
+    },
+    airQuality: {
+      good: 'rgba(40, 255, 150, 0.85)',
+      fair: 'rgba(180, 228, 77, 0.9)',
+      moderate: 'rgba(249, 220, 92, 0.95)',
+      poor: 'rgba(239, 93, 96, 0.9)',
+      very_poor: 'rgba(226, 116, 251, 0.8)'
     }
   },
   lightClear: {
@@ -49,6 +70,13 @@ const themes = {
     color: {
       primary: 'rgba(0, 0, 0, 0.88)',
       secondary: 'rgba(11, 43, 79, 0.88)'
+    },
+    airQuality: {
+      good: 'rgba(40, 255, 150, 0.85)',
+      fair: 'rgba(180, 228, 77, 0.9)',
+      moderate: 'rgba(249, 220, 92, 0.9)',
+      poor: 'rgba(255, 100, 40, 0.85)',
+      very_poor: 'rgba(180, 20, 180, 0.6)'
     }
   },
   lightDefault: {
@@ -61,11 +89,18 @@ const themes = {
     },
     color: {
       primary: 'rgba(0, 0, 0, 0.88)',
-      secondary: 'rgba(45, 64, 99, 0.88)'
+      secondary: 'rgba(35, 54, 89, 0.88)'
+    },
+    airQuality: {
+      good: 'rgba(40, 255, 150, 0.87)',
+      fair: 'rgba(180, 228, 77, 0.94)',
+      moderate: 'rgba(249, 220, 92, 0.92)',
+      poor: 'rgba(255, 100, 40, 0.85)',
+      very_poor: 'rgba(180, 20, 180, 0.6)'
     }
   },
   lightGray: {
-    name: 'Light',
+    name: 'Light Gray',
     background: {
       button: 'rgba(255, 255, 255, 0.4)',
       buttonHover: 'rgba(255, 255, 255, 0.5)',
@@ -75,6 +110,13 @@ const themes = {
     color: {
       primary: 'rgba(0, 0, 0, 0.88)',
       secondary: 'rgba(39, 40, 56, 1)'
+    },
+    airQuality: {
+      good: 'rgba(40, 255, 150, 0.82)',
+      fair: 'rgba(180, 228, 77, 0.88)',
+      moderate: 'rgba(249, 220, 92, 0.9)',
+      poor: 'rgba(255, 100, 40, 0.85)',
+      very_poor: 'rgba(180, 20, 180, 0.6)'
     }
   }
 };

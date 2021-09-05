@@ -10,6 +10,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 1.8rem;
+  background: ${({ theme }) => theme.background.page};
+  color: ${({ theme }) => theme.color.primary};
+  transition: background 1500ms ease-in-out 1000ms, color 300ms ease-in-out 1000ms;
 }
 
 a {
@@ -36,7 +39,7 @@ a {
 }
 
 .page-exit,
-.page-enter-done {
+.page-enter-active {
    opacity: 1;
 }
 
@@ -50,7 +53,7 @@ a {
 .page-enter-done {
   position: relative;
   z-index: 2;
-  transition: opacity 500ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
 }
 
 .page-exit,
@@ -61,6 +64,6 @@ a {
   left: 0;
   right: 0;
   z-index: 1;
-  transition: opacity 500ms ease-in-out 300ms;
+  transition: opacity 200ms ease-in-out;
 }
 `;

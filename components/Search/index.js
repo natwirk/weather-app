@@ -35,9 +35,11 @@ const StyledInput = styled.input`
   padding: 1rem 0;
   color: ${({ theme }) => theme.color.primary};
   border-bottom: 2px solid ${({ theme }) => theme.color.primary};
+  transition: border-color 300ms ease-in-out 1000ms color 30ms ease-in-out 1000ms;
   width: 100%;
   &::placeholder {
     color: ${({ theme }) => theme.color.primary};
+    transition: color 30ms ease-in-out 1000ms;
     opacity: 0.6;
   }
 `;

@@ -6,9 +6,9 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import Wrapper from '../Wrapper';
 
 const StyledHeader = styled.header`
-  color: ${({ theme }) => theme.color.primary};
   padding: 1.5rem 0;
   background: ${({ theme }) => theme.background.primary};
+  transition: background 300ms ease-in-out 1000ms;
 `;
 
 const StyledHeading = styled.h1`

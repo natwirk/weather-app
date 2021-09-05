@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Wrapper from '../Wrapper';
 
 const StyledFooter = styled.footer`
-  color: ${({ theme }) => theme.color.primary};
   background: ${({ theme }) => theme.background.primary};
+  transition: background 1500ms ease-in-out 1000ms;
   position: absolute;
   bottom: 0;
   left: 0;

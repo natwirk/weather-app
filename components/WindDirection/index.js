@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const StyledWindDirection = styled.span`
   display: inline-block;
-  color: ${({ theme }) => theme.color.primary};
   font-size: ${({ size }) => size || '2rem'};
   transform: rotate(${({ deg }) => deg + 90}deg);
 `;

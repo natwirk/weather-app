@@ -9,7 +9,6 @@ const StyledForecastCard = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  color: ${({ theme }) => theme.color.primary};
   opacity: 0.88;
   margin: 0 1rem;
 `;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { StyledTitle } from '../Typography';
@@ -12,6 +12,7 @@ const StyledItems = styled.ul`
   padding: 0;
   color: ${({ loaded, theme }) =>
     loaded ? theme.color.secondary : theme.color.primary};
+  transition: color 300ms ease-in-out 1000ms;
 `;
 
 const StyledItem = styled.li`
@@ -25,9 +26,10 @@ const StyledItemValue = styled.span`
 `;
 
 const AirQuality = ({ pm2_5, pm10, qualityIndex }) => {
+  const theme = useTheme();
   return (
     <Card
-      background={quality.get(qualityIndex)?.background}
+      background={theme.airQuality[quality.get(qualityIndex)?.background]}
       data-test="component-air-quality"
     >
       <StyledTitle color={qualityIndex ? 'secondary' : 'primary'}>

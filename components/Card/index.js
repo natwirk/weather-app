@@ -9,12 +9,11 @@ const StyledCard = styled.div`
   padding: ${({ small }) => (small ? '10px 10px 15px' : '20px 30px 30px')};
   background: ${({ background, theme }) =>
     background || theme.background.primary};
-  color: ${({ theme }) => theme.color.primary};
   display: flex;
   flex-direction: column;
   align-items: ${({ center }) => (center ? 'center' : 'flex-start')};
   opacity: 0.88;
-  transition: background 300ms ease-in-out;
+  transition: background 1500ms ease-in-out;
   will-change: background;
 `;
 
