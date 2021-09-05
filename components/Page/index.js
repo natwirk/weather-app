@@ -8,6 +8,7 @@ import Main from './components/Main';
 const StyledPage = styled.div`
   min-height: 100vh;
   position: relative;
+  padding-bottom: 100px;
 `;
 
 const Page = ({ children, subtitle, withSubtitle }) => (

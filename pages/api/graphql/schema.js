@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-micro';
 
 const typeDefs = gql`
-  type AirPollution {
+  type AirQuality {
     id: ID!
     coordinates: Coordinates
     pm2_5: Float
@@ -28,7 +28,7 @@ const typeDefs = gql`
   }
   type CurrentWeather {
     id: ID!
-    airPollution: AirPollution
+    airQuality: AirQuality
     location: Location
     conditions: Conditions
     coordinates: Coordinates
@@ -69,7 +69,7 @@ const typeDefs = gql`
     speed: Float
   }
   type Query {
-    airPollution(latitude: Float!, longitude: Float!): AirPollution
+    airQuality(latitude: Float!, longitude: Float!): AirQuality
     cities(query: String!): Cities
     currentWeather(city: String!): CurrentWeather
     futureWeather(city: String!): FutureWeather
