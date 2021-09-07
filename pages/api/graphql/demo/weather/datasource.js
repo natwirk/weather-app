@@ -7,7 +7,6 @@ class DemoWeather extends DataSource {
   }
 
   getCurrentWeather = ({ city }) => {
-    console.log(city);
     const cityData = demoData.find(
       el => el.city.toLowerCase() === city.toLowerCase()
     );
