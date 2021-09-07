@@ -111,6 +111,7 @@ const StyledWrapper = styled.div`
 
 const StyledColumn = styled.div`
   grid-area: ${({ area }) => area};
+  max-width: 100%;
 `;
 
 const StyledButton = styled.button`
