@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const StyledWindDirection = styled.span`
   display: inline-block;
   font-size: ${({ size }) => size || '2rem'};
+  line-height: 1;
   transform: rotate(${({ deg }) => deg + 90}deg);
 `;
 
