@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -6,18 +7,26 @@ import Icon from '../Icon';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import WindDirection from '../WindDirection';
 import ForecastTypes from '../../types/forecast';
+import { breakpoints } from '../../styles/breakpoints';
 
 const StyledDescription = styled.p`
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   grid-column: 2;
   margin: 0;
+  @media ${breakpoints.xs} {
+    font-size: 2.8rem;
+  }
 `;
 
 const StyledTemperature = styled.p`
   grid-column: 2;
-  font-size: 4.8rem;
+  font-size: 4rem;
   font-weight: 700;
-  margin: 1rem 0 0;
+  margin: 0.5rem 0 0;
+  @media ${breakpoints.xs} {
+    font-size: 4.8rem;
+    margin: 1rem 0 0;
+  }
 `;
 const StyledIconWrapper = styled.div`
   grid-row: 1 / 3;
@@ -74,6 +83,20 @@ const CurrentWeather = ({
   temperature,
   wind
 }) => {
+  const getIconWidth = () => (window.innerWidth > 375 ? '120px' : '100px');
+  const [iconWidth, setIconWidth] = useState(getIconWidth());
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIconWidth(getIconWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <Card
       data-test="component-current-weather"
@@ -90,9 +113,13 @@ const CurrentWeather = ({
               timeout={500}
             >
               {conditions?.icon ? (
-                <Icon data-test="icon" width="120px" code={conditions.icon} />
+                <Icon
+                  data-test="icon"
+                  width={iconWidth}
+                  code={conditions.icon}
+                />
               ) : (
-                <Skeleton width="120px" height="100px" />
+                <Skeleton width={iconWidth} height="100px" />
               )}
             </CSSTransition>
           </SwitchTransition>
