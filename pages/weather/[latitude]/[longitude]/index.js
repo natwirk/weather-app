@@ -3,17 +3,17 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { gql, useQuery } from '@apollo/client';
-import { breakpoints } from '../../../styles/breakpoints';
-import AirQuality from '../../../components/AirQuality';
-import CurrentWeather from '../../../components/CurrentWeather';
-import ForecastCards from '../../../components/ForecastCards';
-import CityInfo from '../../../components/CityInfo';
-import Page from '../../../components/Page';
-import backgroundHelper from '../../../helpers/background';
+import { breakpoints } from '../../../../styles/breakpoints';
+import AirQuality from '../../../../components/AirQuality';
+import CurrentWeather from '../../../../components/CurrentWeather';
+import ForecastCards from '../../../../components/ForecastCards';
+import CityInfo from '../../../../components/CityInfo';
+import Page from '../../../../components/Page';
+import backgroundHelper from '../../../../helpers/background';
 
 const GET_CURRENT_WEATHER = gql`
-  query GetCurrentWeather($city: String!) {
-    currentWeather(city: $city) {
+  query GetCurrentWeather($latitude: String!, $longitude: String!) {
+    currentWeather(latitude: $latitude, longitude: $longitude) {
       id
       airQuality {
         id
@@ -50,7 +50,7 @@ const GET_CURRENT_WEATHER = gql`
         direction
       }
     }
-    futureWeather(city: $city) {
+    futureWeather(latitude: $latitude, longitude: $longitude) {
       id
       forecast {
         id
@@ -76,13 +76,6 @@ const GET_CURRENT_WEATHER = gql`
     }
   }
 `;
-
-const prepareTitle = text => {
-  if (text) {
-    const decodedText = decodeURI(text);
-    return decodedText[0].toUpperCase() + decodedText.slice(1);
-  }
-};
 
 const StyledWrapper = styled.div`
   display: grid;
@@ -145,15 +138,15 @@ const StyledErrorWrapper = styled.div`
 
 const Weather = ({ changeTheme }) => {
   const router = useRouter();
-  const { city } = router.query;
+  const { latitude, longitude } = router.query;
   const result = useQuery(GET_CURRENT_WEATHER, {
-    skip: !city,
+    skip: !latitude || !longitude,
     variables: {
-      city: city
+      latitude: latitude,
+      longitude: longitude
     }
   });
   const { data, error, loading } = result;
-  const title = prepareTitle(city);
 
   useEffect(() => {
     const icon = data?.currentWeather?.conditions?.icon;
@@ -167,7 +160,7 @@ const Weather = ({ changeTheme }) => {
   };
 
   return (
-    <Page subtitle={title} withSubtitle={true}>
+    <Page subtitle={data?.currentWeather?.location?.city} withSubtitle={true}>
       <div>
         {!error && (data || loading) && (
           <StyledWrapper>

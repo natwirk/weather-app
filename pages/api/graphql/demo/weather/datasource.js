@@ -6,10 +6,11 @@ class DemoWeather extends DataSource {
     super();
   }
 
-  getCurrentWeather = ({ city }) => {
-    const cityData = demoData.find(
-      el => el.city.toLowerCase() === city.toLowerCase()
-    );
+  getData = ({ latitude, longitude }) =>
+    demoData.find(el => el.latitude === latitude && el.longitude === longitude);
+
+  getCurrentWeather = ({ latitude, longitude }) => {
+    const cityData = this.getData({ latitude, longitude });
     if (cityData?.currentWeather) {
       return cityData.currentWeather;
     } else {
@@ -17,8 +18,8 @@ class DemoWeather extends DataSource {
     }
   };
 
-  getFutureWeather = async ({ city }) => {
-    const cityData = demoData.find(el => el.city === city);
+  getFutureWeather = async ({ latitude, longitude }) => {
+    const cityData = this.getData({ latitude, longitude });
     if (cityData.futureWeather) {
       return cityData.futureWeather;
     } else {

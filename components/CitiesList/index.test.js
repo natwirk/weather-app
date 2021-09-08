@@ -49,7 +49,7 @@ test('redirects to the correct city on click', () => {
   expect(buttons.length).toBe(list.length);
   buttons.forEach((button, index) => {
     button.simulate('click', event);
-    const value = encodeURIComponent(list[index].name);
+    const value = `${list[index].latitude}/${list[index].longitude}`;
     expect(push).toHaveBeenCalledWith(`weather/${value}`);
   });
 });

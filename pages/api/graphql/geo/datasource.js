@@ -22,7 +22,9 @@ class OpenWeatherMapGeoAPI extends RESTDataSource {
       items: result.map(city => ({
         id: nanoid(),
         name: city.name,
-        country: city.country
+        country: city.country,
+        latitude: city.lat,
+        longitude: city.lon
       }))
     };
   };

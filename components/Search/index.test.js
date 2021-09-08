@@ -91,10 +91,8 @@ describe('on loaded', () => {
     buttons.forEach((button, index) => {
       button.simulate('click');
       const item = items[index];
-      const delimeter = encodeURIComponent(',');
-      expect(push).toHaveBeenCalledWith(
-        `weather/${item.name}${delimeter}${item.country}`
-      );
+      const value = `${item.latitude}/${item.longitude}`;
+      expect(push).toHaveBeenCalledWith(`weather/${value}`);
     });
   });
 });

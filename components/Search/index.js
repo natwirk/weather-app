@@ -82,7 +82,9 @@ const StyledItem = styled.li`
 `;
 
 const StyledLink = styled.button`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 1.5rem 1rem;
   border: 0;
@@ -139,6 +141,10 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledCoordinates = styled.span`
+  font-size: 1.2rem;
+`;
+
 const StyledLoader = styled.div`
   position: absolute;
   z-index: 20;
@@ -171,6 +177,8 @@ export const GET_CITIES = gql`
         id
         name
         country
+        latitude
+        longitude
       }
     }
   }
@@ -206,7 +214,7 @@ const Search = () => {
   }, []);
 
   const changePage = href => {
-    router.push(`weather/${encodeURIComponent(href)}`);
+    router.push(`weather/${href}`);
   };
   const handleClick = href => event => {
     event.preventDefault();
@@ -229,7 +237,7 @@ const Search = () => {
   const onSubmit = event => {
     event.preventDefault();
     if (cities?.items?.length) {
-      changePage(`${cities.items[0].name}, ${cities.items[0].country}`);
+      changePage(`${cities.items[0].latitude}/${cities.items[0].longitude}`);
     }
   };
 
@@ -286,9 +294,16 @@ const Search = () => {
                     <StyledLink
                       type="button"
                       data-test="button"
-                      onClick={handleClick(`${item.name},${item.country}`)}
+                      onClick={handleClick(
+                        `${item.latitude}/${item.longitude}`
+                      )}
                     >
-                      {item.name}, {item.country}
+                      <span>
+                        {item.name}, {item.country}
+                      </span>
+                      <StyledCoordinates>
+                        lat: {item.latitude}, lon: {item.longitude}
+                      </StyledCoordinates>
                     </StyledLink>
                   </StyledItem>
                 ))}

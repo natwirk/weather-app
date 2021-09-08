@@ -11,15 +11,21 @@ const resolvers = {
     cities: (_, { query }, { dataSources }) =>
       dataSources.openWeatherMapGeoAPI.getCities({ query }),
     currentWeather: process.env.API_KEY
-      ? (_, { city }, { dataSources }) =>
-          dataSources.openWeatherMapAPI.getCurrentWeather({ city })
-      : (_, { city }, { dataSources }) =>
-          dataSources.demoWeather.getCurrentWeather({ city }),
+      ? (_, { latitude, longitude }, { dataSources }) =>
+          dataSources.openWeatherMapAPI.getCurrentWeather({
+            latitude,
+            longitude
+          })
+      : (_, { latitude, longitude }, { dataSources }) =>
+          dataSources.demoWeather.getCurrentWeather({ latitude, longitude }),
     futureWeather: process.env.API_KEY
-      ? (_, { city }, { dataSources }) =>
-          dataSources.openWeatherMapAPI.getFutureWeather({ city })
-      : (_, { city }, { dataSources }) =>
-          dataSources.demoWeather.getFutureWeather({ city })
+      ? (_, { latitude, longitude }, { dataSources }) =>
+          dataSources.openWeatherMapAPI.getFutureWeather({
+            latitude,
+            longitude
+          })
+      : (_, { latitude, longitude }, { dataSources }) =>
+          dataSources.demoWeather.getFutureWeather({ latitude, longitude })
   }
 };
 
