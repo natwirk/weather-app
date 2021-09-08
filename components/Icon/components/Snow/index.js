@@ -19,11 +19,7 @@ const SnowIcon = ({ color, width }) => {
     delay: '1s'
   };
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={width}
-      viewBox="0 0 100 96.812"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width={width} viewBox="0 0 100 100">
       <g transform="translate(66.604 0) rotate(90)">
         <StyledPath
           d="M0,0V46.777"

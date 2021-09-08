@@ -94,7 +94,12 @@ const ForecastCard = ({
           data-test="card"
         >
           <StyledInfo>
-            <Icon data-test="icon" width="80px" code={conditions.icon} />
+            <Icon
+              data-test="icon"
+              width="80px"
+              height="80px"
+              code={conditions.icon}
+            />
             <StyledDescription data-test="description">
               {conditions.description}
             </StyledDescription>
