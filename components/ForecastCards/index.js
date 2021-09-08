@@ -24,7 +24,11 @@ const skeletonData = [...Array(8)].map(() => nanoid());
 const ForecastCards = ({ forecast }) => (
   <>
     <SwitchTransition>
-      <CSSTransition key={forecast} classNames="fade" timeout={500}>
+      <CSSTransition
+        key={forecast ? 'loaded' : 'loading'}
+        classNames="fade"
+        timeout={500}
+      >
         <StyledForecastCards data-test="component-forecast-cards">
           {forecast
             ? forecast.map(element => (
