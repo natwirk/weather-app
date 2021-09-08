@@ -1,6 +1,7 @@
 [
   {
-    "city": "Kraków, PL",
+    "latitude": "50.0833",
+    "longitude": "19.9167",
     "currentWeather": {
       "id": "3094802",
       "airQuality": {
@@ -891,7 +892,8 @@
     }
   },
   {
-    "city": "Wrocław, PL",
+    "latitude": "51.1",
+    "longitude": "17.0333",
     "currentWeather": {
       "id": "3081368",
       "airQuality": {
@@ -1782,7 +1784,8 @@
     }
   },
   {
-    "city": "Warszawa, PL",
+    "latitude": "52.2298",
+    "longitude": "21.0118",
     "currentWeather": {
       "id": "756135",
       "airQuality": {
@@ -2673,7 +2676,8 @@
     }
   },
   {
-    "city": "London, GB",
+    "latitude": "51.5085",
+    "longitude": "-0.1257",
     "currentWeather": {
       "id": "2643743",
       "airQuality": {
@@ -3565,6 +3569,8 @@
   },
   {
     "city": "New York, US",
+    "latitude": "40.7143",
+    "longitude": "-74.006",
     "currentWeather": {
       "id": "5128581",
       "airQuality": {
@@ -4456,6 +4462,8 @@
   },
   {
     "city": "Tokyo, JP",
+    "latitude": "35.6895",
+    "longitude": "139.6917",
     "currentWeather": {
       "id": "1850144",
       "airQuality": {
@@ -5347,6 +5355,8 @@
   },
   {
     "city": "Rome, IT",
+    "latitude": "41.8947",
+    "longitude": "12.4839",
     "currentWeather": {
       "id": "3169070",
       "airQuality": {
@@ -6238,6 +6248,8 @@
   },
   {
     "city": "Lisbon, PT",
+    "latitude": "38.7167",
+    "longitude": "-9.1333",
     "currentWeather": {
       "id": "2267057",
       "airQuality": {

@@ -12,6 +12,8 @@ const typeDefs = gql`
     id: String
     name: String
     country: String
+    latitude: Float
+    longitude: Float
   }
   type Cities {
     searchValue: String
@@ -71,8 +73,8 @@ const typeDefs = gql`
   type Query {
     airQuality(latitude: Float!, longitude: Float!): AirQuality
     cities(query: String!): Cities
-    currentWeather(city: String!): CurrentWeather
-    futureWeather(city: String!): FutureWeather
+    currentWeather(latitude: String!, longitude: String!): CurrentWeather
+    futureWeather(latitude: String!, longitude: String!): FutureWeather
   }
 `;
 

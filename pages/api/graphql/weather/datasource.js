@@ -28,16 +28,17 @@ class OpenWeatherMapAPI extends RESTDataSource {
     qualityIndex: result.list[0].main.aqi
   });
 
-  getCurrentWeather = async ({ city }) => {
+  getCurrentWeather = async ({ latitude, longitude }) => {
     const response = await this.get('weather', {
-      q: city,
+      lat: latitude,
+      lon: longitude,
       units: 'metric',
       appid: process.env.API_KEY
     });
-    return this.currentWeatherReducer(response, city);
+    return this.currentWeatherReducer(response);
   };
 
-  currentWeatherReducer = (result, city) => {
+  currentWeatherReducer = result => {
     const {
       coord: { lat: latitude, lon: longitude },
       timezone
@@ -53,7 +54,7 @@ class OpenWeatherMapAPI extends RESTDataSource {
         longitude
       },
       location: {
-        city: result.name ? result.name : city,
+        city: result.name,
         country: result.sys.country,
         sunrise: formatTime(result.sys.sunrise, timezone),
         sunset: formatTime(result.sys.sunset, timezone)
@@ -79,23 +80,24 @@ class OpenWeatherMapAPI extends RESTDataSource {
     };
   };
 
-  getFutureWeather = async ({ city }) => {
+  getFutureWeather = async ({ latitude, longitude }) => {
     const response = await this.get('forecast', {
-      q: city,
+      lat: latitude,
+      lon: longitude,
       units: 'metric',
       appid: process.env.API_KEY
     });
-    return this.futureWeatherReducer(response, city);
+    return this.futureWeatherReducer(response);
   };
 
-  futureWeatherReducer = (result, city) => {
+  futureWeatherReducer = result => {
     const {
       city: { timezone }
     } = result;
     return {
       id: result.id || 0,
       location: {
-        city: result.city.name ? result.city.name : city,
+        city: result.city.name,
         country: result.city.country,
         sunrise: formatTime(result.city.sunrise, timezone),
         sunset: formatTime(result.city.sunset, timezone)

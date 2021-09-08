@@ -5,35 +5,51 @@ import { breakpoints } from '../../styles/breakpoints';
 export const list = [
   {
     key: 0,
-    name: 'Kraków, PL'
+    name: 'Kraków, PL',
+    latitude: '50.0833',
+    longitude: '19.9167'
   },
   {
     key: 1,
-    name: 'Wrocław, PL'
+    name: 'Wrocław, PL',
+    latitude: '51.1',
+    longitude: '17.0333'
   },
   {
     key: 2,
-    name: 'Warszawa, PL'
+    name: 'Warsaw, PL',
+    latitude: '52.2298',
+    longitude: '21.0118'
   },
   {
     key: 3,
-    name: 'London, GB'
+    name: 'London, GB',
+    latitude: '51.5085',
+    longitude: '-0.1257'
   },
   {
     key: 4,
-    name: 'New York, US'
+    name: 'New York, US',
+    latitude: '40.7143',
+    longitude: '-74.006'
   },
   {
     key: 5,
-    name: 'Tokyo, JP'
+    name: 'Tokyo, JP',
+    latitude: '35.6895',
+    longitude: '139.6917'
   },
   {
     key: 6,
-    name: 'Rome, IT'
+    name: 'Rome, IT',
+    latitude: '41.8947',
+    longitude: '12.4839'
   },
   {
     key: 7,
-    name: 'Lisbon, PT'
+    name: 'Lisbon, PT',
+    latitude: '38.7167',
+    longitude: '-9.1333'
   }
 ];
 
@@ -127,7 +143,7 @@ const CitiesList = () => {
   const router = nextRouter.useRouter();
 
   const changePage = href => {
-    router.push(`weather/${encodeURIComponent(href)}`);
+    router.push(`weather/${href}`);
   };
   const onClick = href => event => {
     event.preventDefault();
@@ -140,7 +156,7 @@ const CitiesList = () => {
           <StyledButton
             type="button"
             data-test="list-button"
-            onClick={onClick(item.name)}
+            onClick={onClick(`${item.latitude}/${item.longitude}`)}
           >
             {item.name}
           </StyledButton>
