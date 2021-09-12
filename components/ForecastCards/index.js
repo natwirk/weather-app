@@ -11,11 +11,10 @@ const StyledForecastCards = styled.div`
   max-width: calc(100% + 4rem);
   overflow-x: auto;
   margin: 0 -2rem;
-  padding: 0 1rem;
+  padding: 0 1rem 1.5rem 0;
   @media ${breakpoints.lg} {
-    max-width: calc(100% + 2rem);
-    margin: 0 0 0 -2rem;
-    padding: 0 0 0 1rem;
+    max-width: 100%;
+    margin: 0 0 1.5rem 0;
   }
 `;
 
@@ -24,7 +23,11 @@ const skeletonData = [...Array(8)].map(() => nanoid());
 const ForecastCards = ({ forecast }) => (
   <>
     <SwitchTransition>
-      <CSSTransition key={forecast} classNames="fade" timeout={500}>
+      <CSSTransition
+        key={forecast ? 'loaded' : 'loading'}
+        classNames="fade"
+        timeout={500}
+      >
         <StyledForecastCards data-test="component-forecast-cards">
           {forecast
             ? forecast.map(element => (

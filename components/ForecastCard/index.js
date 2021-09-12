@@ -4,6 +4,7 @@ import FlipCard from '../FlipCard';
 import Icon from '../Icon';
 import WindDirection from '../WindDirection';
 import ForecastTypes from '../../types/forecast';
+import { breakpoints } from '../../styles/breakpoints';
 
 const StyledForecastCard = styled.div`
   display: inline-flex;
@@ -11,9 +12,24 @@ const StyledForecastCard = styled.div`
   align-items: center;
   opacity: 0.88;
   margin: 0 1rem;
+  &:first-child {
+    margin-left: 0;
+    padding-left: 2rem;
+    @media ${breakpoints.lg} {
+      padding-left: 0;
+    }
+  }
+  &:last-child {
+    margin-right: 0;
+    padding-right: 2rem;
+    @media ${breakpoints.lg} {
+      padding-right: 0;
+    }
+  }
 `;
 
 const StyledDescription = styled.span`
+  font-size: 1.6rem;
   margin: 1rem 0 0;
 `;
 
@@ -94,7 +110,12 @@ const ForecastCard = ({
           data-test="card"
         >
           <StyledInfo>
-            <Icon data-test="icon" width="80px" code={conditions.icon} />
+            <Icon
+              data-test="icon"
+              width="80px"
+              height="80px"
+              code={conditions.icon}
+            />
             <StyledDescription data-test="description">
               {conditions.description}
             </StyledDescription>

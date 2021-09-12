@@ -12,7 +12,7 @@ body {
   font-size: 1.8rem;
   background: ${({ theme }) => theme.background.page};
   color: ${({ theme }) => theme.color.primary};
-  transition: background 1500ms ease-in-out 1000ms, color 300ms ease-in-out 1000ms;
+  transition: background 1500ms ease-in-out 1000ms;
 }
 
 a {

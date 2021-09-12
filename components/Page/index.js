@@ -8,7 +8,7 @@ import Main from './components/Main';
 const StyledPage = styled.div`
   min-height: 100vh;
   position: relative;
-  padding-bottom: 100px;
+  padding-bottom: 120px;
 `;
 
 const Page = ({ children, subtitle, withSubtitle }) => (
@@ -25,6 +25,26 @@ const Page = ({ children, subtitle, withSubtitle }) => (
     <Main>{children}</Main>
     <Footer>
       <span>Another Weather App</span>
+      <span>
+        Designed and developed by{' '}
+        <a
+          href="https://github.com/wnatalia"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          @wnatalia
+        </a>
+      </span>
+      <span>
+        Data by{' '}
+        <a
+          href="https://openweathermap.org/api"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Open Weather API
+        </a>
+      </span>
     </Footer>
   </StyledPage>
 );

@@ -2,11 +2,7 @@ import PropTypes from 'prop-types';
 import { StyledLine } from '../SVGElements';
 
 const MistIcon = ({ color, width }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={width}
-    viewBox="0 0 99.991 59.614"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" width={width} viewBox="0 -15 100 100">
     <g transform="translate(0 1.5)">
       <StyledLine
         x2="68"
@@ -15,9 +11,9 @@ const MistIcon = ({ color, width }) => (
         dashArray={68}
         dashOffset={68}
         duration="0.2s"
+        delay="0s"
         timing="ease-in-out"
       />
-      ;
       <StyledLine
         x2="60.788"
         transform="translate(0.203 18.871)"

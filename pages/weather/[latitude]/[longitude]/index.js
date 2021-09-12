@@ -79,24 +79,28 @@ const GET_CURRENT_WEATHER = gql`
 
 const StyledWrapper = styled.div`
   display: grid;
-  grid-gap: 40px;
+  grid-gap: 4rem;
   grid-template-columns: 100%;
-  padding: 40px 0 80px;
+  padding: 40px 0 0;
   grid-template-areas:
+    'back-top'
     'city-info'
     'current-weather'
     'future-weather'
-    'air-quality';
+    'air-quality'
+    'back-bottom';
   @media ${breakpoints.sm} {
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
+      'back-top back-top'
       'city-info current-weather'
       'air-quality current-weather'
       'future-weather future-weather';
   }
-  @media ${breakpoints.md} {
+  @media ${breakpoints.lg} {
     grid-template-columns: 2fr 3fr 2fr;
     grid-template-areas:
+      'back-top back-top back-top'
       'city-info current-weather air-quality'
       'future-weather future-weather future-weather';
   }
@@ -108,16 +112,16 @@ const StyledColumn = styled.div`
 `;
 
 const StyledButton = styled.button`
-  width: 100px;
   background: ${({ theme }) => theme.background.button};
   color: ${({ theme }) => theme.color.primary};
-  border: 0;
   outline: 0;
   border-radius: 4px;
   padding: 1.5rem 2rem;
-  border: 2px solid ${({ theme }) => theme.color.primary};
+  border: ${({ border, theme }) =>
+    border ? `2px solid ${theme.color.primary}` : '0'};
   cursor: pointer;
   font-size: 2.2rem;
+  white-space: nowrap;
   &:hover {
     background: ${({ theme }) => theme.background.buttonHover};
   }
@@ -161,9 +165,14 @@ const Weather = ({ changeTheme }) => {
 
   return (
     <Page subtitle={data?.currentWeather?.location?.city} withSubtitle={true}>
-      <div>
+      <>
         {!error && (data || loading) && (
           <StyledWrapper>
+            <StyledColumn area="back-top">
+              <StyledButton type="button" onClick={onBackClick}>
+                &#8592; Back
+              </StyledButton>
+            </StyledColumn>
             <StyledColumn area="city-info">
               <CityInfo
                 country={data?.currentWeather.location.country}
@@ -198,10 +207,12 @@ const Weather = ({ changeTheme }) => {
         {error && (
           <StyledErrorWrapper>
             <StyledError>City not found.</StyledError>
-            <StyledButton onClick={onBackClick}>Back</StyledButton>
+            <StyledButton border={true} onClick={onBackClick}>
+              Back
+            </StyledButton>
           </StyledErrorWrapper>
         )}
-      </div>
+      </>
     </Page>
   );
 };

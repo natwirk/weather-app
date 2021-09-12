@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Wrapper from '../Wrapper';
+import { breakpoints } from '../../../../styles/breakpoints';
 
 const StyledFooter = styled.footer`
   background: ${({ theme }) => theme.background.primary};
@@ -11,10 +12,25 @@ const StyledFooter = styled.footer`
   width: 100%;
   padding: 1.5rem 0;
 `;
+const StyledFooterContent = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  @media ${breakpoints.sm} {
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+  }
+  a {
+    text-decoration: underline;
+    font-weight: 700;
+  }
+`;
 
 const Footer = ({ children }) => (
   <StyledFooter>
-    <Wrapper>{children}</Wrapper>
+    <Wrapper>
+      <StyledFooterContent>{children}</StyledFooterContent>
+    </Wrapper>
   </StyledFooter>
 );
 
