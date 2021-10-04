@@ -35,7 +35,7 @@ const Footer = ({ children }) => (
 );
 
 Footer.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.arrayOf(PropTypes.element)
 };
 
 export default Footer;
